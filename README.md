@@ -1,2 +1,3 @@
 # Sweet-Life
-game for android.
+Game for android.
+У вас свое кафе. Сможете ли вы обслужить всех посетителей своими сладостями?
