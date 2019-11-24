@@ -2,11 +2,11 @@ package com.example.sweet_life;
 
     public class Dish {
 
-    static public int hp = 30;
+        static public int hp = 30;
         public String name = "dish";
-    public int colour = 0; // 0 - нейтральный, 1 - ванильный, 2 - шоколадный, 3 - клубничный//
+        public int colour = 0; // 0 - нейтральный, 1 - ванильный, 2 - шоколадный, 3 - клубничный//
+        public boolean isColour = false;
 
-    boolean isColour = false;
     public Dish(int colour,boolean isColour){
         this.colour = colour;
         this.isColour = isColour;
@@ -23,4 +23,12 @@ package com.example.sweet_life;
             return true;
         else return false;
     }
-}
+
+        public void setColour(int colour) {
+            this.colour = colour;
+        }
+
+        public void setColour(boolean colour) {
+            isColour = colour;
+        }
+    }
