@@ -10,6 +10,13 @@ public class Icecream extends Dish{
         this.isHornForIcecream = isHornForIcecream;
         this.isAutomat = isAutomat;
         this.isPosypka = isPosypka;
+        this.name = "icecream";
 
+    }
+    public boolean equals(Icecream icecream){
+        if(icecream.colour==this.colour && icecream.isColour == this.isColour && this.name.equals(icecream.name) && icecream.isHornForIcecream == this.isHornForIcecream &&
+                icecream.isAutomat == this.isAutomat && icecream.isPosypka == this.isPosypka)
+            return true;
+        else return false;
     }
 }

@@ -10,5 +10,13 @@ public class Cake extends Dough{
         this.isHornForCake = isHornForCake;
         this.isFurnace = isFurnace;
         this.isFruit = isFruit;
+        this.name = "cake";
+    }
+
+    public boolean equals(Cake cake){
+        if(cake.colour==this.colour && cake.isColour == this.isColour && this.name.equals(cake.name) && cake.isHornForCake == this.isHornForCake && cake.isFurnace == this.isFurnace &&
+        cake.isFruit == this.isFruit)
+            return true;
+        else return false;
     }
 }
