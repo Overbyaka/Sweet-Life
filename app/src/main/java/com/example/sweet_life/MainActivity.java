@@ -120,9 +120,13 @@ public class MainActivity extends AppCompatActivity {
                             arrayImageDish[0].setImageResource(R.drawable.croissantchocolate);
                         else if (dishes[0].equals(new Croissant(3, true, true)))
                             arrayImageDish[0].setImageResource(R.drawable.croissantstrawberry);
-                        else if (dishes[0].equals(new Icecream(0, false, true, false, false, false)))
+                        /*else if (dishes[0].equals(new Icecream(0, false, true, false, false, false)))
                             arrayImageDish[0].setImageResource(R.drawable.hornoficecream);
                         else if (dishes[0].equals(new Icecream(0, false, true, true, false, false)))
+                            arrayImageDish[0].setImageResource((R.drawable.hornoficecreamonstandart));*/
+                        else if(dishes[0] instanceof Icecream && (((Icecream)dishes[0]).equals(new Icecream(0,false,true,false,false,false))))
+                            arrayImageDish[0].setImageResource((R.drawable.hornoficecream));
+                        else if(dishes[0] instanceof Icecream && (((Icecream)dishes[0]).equals(new Icecream(0,false,true,true,false,false))))
                             arrayImageDish[0].setImageResource((R.drawable.hornoficecreamonstandart));
                         else if (dishes[0].equals(new Icecream(1, true, true, true, false, false)))
                             arrayImageDish[0].setImageResource((R.drawable.hornoficecreamonvanille));
@@ -191,9 +195,13 @@ public class MainActivity extends AppCompatActivity {
                             arrayImageDish[0].setImageResource(R.drawable.croissantchocolateon);
                         else if (dishes[0].equals(new Croissant(3, true, true)))
                             arrayImageDish[0].setImageResource(R.drawable.croissantstrawberryon);
-                        else if (dishes[0].equals(new Icecream(0, false, true, false, false, false)))
+                        /*else if (dishes[0].equals(new Icecream(0, false, true, false, false, false)))
                             arrayImageDish[0].setImageResource(R.drawable.hornoficecreamon);
                         else if (dishes[0].equals(new Icecream(0, false, true, true, false, false)))
+                            arrayImageDish[0].setImageResource((R.drawable.hornoficecreamonstandarton));*/
+                        else if(dishes[0] instanceof Icecream && (((Icecream)dishes[0]).equals(new Icecream(0,false,true,false,false,false))))
+                            arrayImageDish[0].setImageResource((R.drawable.hornoficecreamon));
+                        else if(dishes[0] instanceof Icecream && (((Icecream)dishes[0]).equals(new Icecream(0,false,true,true,false,false))))
                             arrayImageDish[0].setImageResource((R.drawable.hornoficecreamonstandarton));
                         else if (dishes[0].equals(new Icecream(1, true, true, true, false, false)))
                             arrayImageDish[0].setImageResource((R.drawable.hornoficecreamonvanilleon));
@@ -1127,9 +1135,10 @@ public class MainActivity extends AppCompatActivity {
                     numberTakeDishForAutomatIcecream = 3;
                 }
                 if(isWorkingAutomatIcecream){
-                    Timer timer = new Timer();
-                    long delay = 0;
-                    long period = 3000;
+                    final Timer timer = new Timer();
+                    long delay = 1;
+                    long period = 3001;
+                    timeAutomatIcecream = 0;
                     timer.scheduleAtFixedRate(new TimerTask() {
                         @Override
                         public void run() {
@@ -1137,26 +1146,27 @@ public class MainActivity extends AppCompatActivity {
                             runOnUiThread(new Runnable() {
                                 @Override
                                 public void run() {
+                                    automatIcecream.setImageResource(R.drawable.icecreamwithposypkavanille); //ПОМЕНЯТЬ
                                     runOnUiThread(new Runnable() {
                                         @Override
                                         public void run() {
-                                            automatIcecream.setImageResource(R.drawable.icecreamwithposypkavanille); //ПОМЕНЯТЬ
+                                            automatIcecream.setImageResource(R.drawable.icecreamwithposypkastrawberry); //ПОМЕНЯТЬ
+                                            isWorkingAutomatIcecream = false;
+                                            arrayFlagsIsEmpty[numberTakeDishForAutomatIcecream] = false;
+                                            if(dishes[numberTakeDishForAutomatIcecream].colour == 1)
+                                                arrayImageDish[numberTakeDishForAutomatIcecream].setImageResource(R.drawable.icecreamwithoutposypkavanille);
+                                            else if(dishes[numberTakeDishForAutomatIcecream].colour == 2)
+                                                arrayImageDish[numberTakeDishForAutomatIcecream].setImageResource(R.drawable.icecreamwithoutposypkachocolate);
+                                            else if(dishes[numberTakeDishForAutomatIcecream].colour == 3)
+                                                arrayImageDish[numberTakeDishForAutomatIcecream].setImageResource(R.drawable.icecreamwithoutposypkastrawberry);
+                                            timer.cancel();
                                         }
                                     });
                                 }
                             });
                         }
                     },delay,period);
-                    timeAutomatIcecream = 0;
-                    automatIcecream.setImageResource(R.drawable.icecreamwithposypkastrawberry); //ПОМЕНЯТЬ
-                    isWorkingAutomatIcecream = false;
-                    arrayFlagsIsEmpty[numberTakeDishForAutomatIcecream] = false;
-                    if(dishes[numberTakeDishForAutomatIcecream].colour == 1)
-                        arrayImageDish[numberTakeDishForAutomatIcecream].setImageResource(R.drawable.icecreamwithoutposypkavanille);
-                    else if(dishes[numberTakeDishForAutomatIcecream].colour == 2)
-                        arrayImageDish[numberTakeDishForAutomatIcecream].setImageResource(R.drawable.icecreamwithoutposypkachocolate);
-                    else if(dishes[numberTakeDishForAutomatIcecream].colour == 3)
-                        arrayImageDish[numberTakeDishForAutomatIcecream].setImageResource(R.drawable.icecreamwithoutposypkastrawberry);
+
                 }
             }
         });

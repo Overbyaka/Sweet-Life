@@ -1,6 +1,8 @@
 package com.example.sweet_life;
 
-    public class Dish {
+import androidx.annotation.Nullable;
+
+public class Dish {
 
         static public int hp = 30;
         public String name = "dish";
@@ -18,13 +20,23 @@ package com.example.sweet_life;
         this.name = "dish";
     }
 
-    public boolean equals(Dish dish){
+    /*public boolean equals(Dish dish){
         if(dish.colour==this.colour && dish.isColour == this.isColour && this.name.equals(dish.name))
             return true;
         else return false;
+    }*/
+
+    @Override
+    public boolean equals(Object obj) {
+        if(obj == this)
+            return true;
+        if(obj == null || obj.getClass() != this.getClass())
+            return false;
+        Dish dish = (Dish)obj;
+        return dish.colour==this.colour && dish.isColour == this.isColour && this.name.equals(dish.name);
     }
 
-        public void setColour(int colour) {
+    public void setColour(int colour) {
             this.colour = colour;
         }
 
