@@ -26,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
     boolean isWorkingAutomatIcecream = false;
     int timeAutomatIcecream = 0;
     int numberTakeDishForAutomatIcecream;
+    boolean change;
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
@@ -72,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
         arrayImageDish[3] = (ImageButton)findViewById(R.id.imageDish4);
 
         for(int i = 0; i < countDishes;i++){
-            dishes[i] = new Dish();
+            dishes[i] = new Nothing();
         }
 
         /*Подсветка для первой тарелки*/
@@ -81,158 +82,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (!arrayFlagsIsEmpty[0]) {
-                    if (arrayFlags[0]) {
-                        if (dishes[0].equals(new Donut(0, true, false, false)))
-                            arrayImageDish[0].setImageResource(R.drawable.donutwithposypkastrawberry); // ИСПРАВИТЬ ИСПРАВИТЬ ИСПРАВИТЬ ИСПРАВТЬ
-                        else if (dishes[0].equals(new Donut(1, true, true, false)))
-                            arrayImageDish[0].setImageResource(R.drawable.donutwithoutposypkavanille);
-                        else if (dishes[0].equals(new Donut(2, true, true, false)))
-                            arrayImageDish[0].setImageResource(R.drawable.donutwithoutposypkachocolate);
-                        else if (dishes[0].equals(new Donut(3, true, true, false)))
-                            arrayImageDish[0].setImageResource(R.drawable.donutwithoutposypkastrawberry);
-                        else if (dishes[0].equals(new Donut(1, true, true, true)))
-                            arrayImageDish[0].setImageResource(R.drawable.donutwithposypkavanille);
-                        else if (dishes[0].equals(new Donut(2, true, true, false)))
-                            arrayImageDish[0].setImageResource(R.drawable.donutwithposypkachocolate);
-                        else if (dishes[0].equals(new Donut(3, true, true, false)))
-                            arrayImageDish[0].setImageResource(R.drawable.donutwithposypkastrawberry);
-                        else if (dishes[0].equals(new Cake(1, true, true, false, false)))
-                            arrayImageDish[0].setImageResource(R.drawable.cakewithoutfruitchocolate); //ИСПРАВИТЬ ИСПРАВИТЬ ИСПРАВИТЬ ИСПРАВИТЬ
-                        else if (dishes[0].equals(new Cake(2, true, true, false, false)))
-                            arrayImageDish[0].setImageResource(R.drawable.cakewithoutfruitchocolate); //ИСПРАВИТЬ ИСПРАВИТЬ ИСПРАВИТЬ ИСПРАВИТЬ
-                        else if (dishes[0].equals(new Cake(3, true, true, false, false)))
-                            arrayImageDish[0].setImageResource(R.drawable.cakewithoutfruitchocolate); //ИСПРАВИТЬ ИСПРАВИТЬ ИСПРАВИТЬ ИСПРАВИТЬ
-                        else if (dishes[0].equals(new Cake(1, true, true, true, false)))
-                            arrayImageDish[0].setImageResource(R.drawable.cakewithoutfruitvanille);
-                        else if (dishes[0].equals(new Cake(2, true, true, true, false)))
-                            arrayImageDish[0].setImageResource(R.drawable.cakewithoutfruitchocolate);
-                        else if (dishes[0].equals(new Cake(3, true, true, true, false)))
-                            arrayImageDish[0].setImageResource(R.drawable.cakewithoutfruitstrawberry);
-                        else if (dishes[0].equals(new Cake(1, true, true, true, true)))
-                            arrayImageDish[0].setImageResource(R.drawable.cakewithfruitvanille);
-                        else if (dishes[0].equals(new Cake(2, true, true, true, true)))
-                            arrayImageDish[0].setImageResource(R.drawable.cakewithfruitchocolate);
-                        else if (dishes[0].equals(new Cake(3, true, true, true, true)))
-                            arrayImageDish[0].setImageResource(R.drawable.cakewithfruitstrawberry);
-                        else if (dishes[0].equals(new Croissant(1, true, true)))
-                            arrayImageDish[0].setImageResource(R.drawable.croissantvanille);
-                        else if (dishes[0].equals(new Croissant(2, true, true)))
-                            arrayImageDish[0].setImageResource(R.drawable.croissantchocolate);
-                        else if (dishes[0].equals(new Croissant(3, true, true)))
-                            arrayImageDish[0].setImageResource(R.drawable.croissantstrawberry);
-                        /*else if (dishes[0].equals(new Icecream(0, false, true, false, false, false)))
-                            arrayImageDish[0].setImageResource(R.drawable.hornoficecream);
-                        else if (dishes[0].equals(new Icecream(0, false, true, true, false, false)))
-                            arrayImageDish[0].setImageResource((R.drawable.hornoficecreamonstandart));*/
-                        else if(dishes[0] instanceof Icecream && (((Icecream)dishes[0]).equals(new Icecream(0,false,true,false,false,false))))
-                            arrayImageDish[0].setImageResource((R.drawable.hornoficecream));
-                        else if(dishes[0] instanceof Icecream && (((Icecream)dishes[0]).equals(new Icecream(0,false,true,true,false,false))))
-                            arrayImageDish[0].setImageResource((R.drawable.hornoficecreamonstandart));
-                        else if (dishes[0].equals(new Icecream(1, true, true, true, false, false)))
-                            arrayImageDish[0].setImageResource((R.drawable.hornoficecreamonvanille));
-                        else if (dishes[0].equals(new Icecream(2, true, true, true, false, false)))
-                            arrayImageDish[0].setImageResource((R.drawable.hornoficecreamonchocolate));
-                        else if (dishes[0].equals(new Icecream(3, true, true, true, false, false)))
-                            arrayImageDish[0].setImageResource((R.drawable.hornoficecreamonstrawberry));
-                        else if (dishes[0].equals(new Icecream(1, true, true, true, true, false)))
-                            arrayImageDish[0].setImageResource((R.drawable.icecreamwithoutposypkavanille));
-                        else if (dishes[0].equals(new Icecream(2, true, true, true, true, false)))
-                            arrayImageDish[0].setImageResource((R.drawable.icecreamwithoutposypkachocolate));
-                        else if (dishes[0].equals(new Icecream(3, true, true, true, true, false)))
-                            arrayImageDish[0].setImageResource((R.drawable.icecreamwithoutposypkastrawberry));
-                        else if (dishes[0].equals(new Icecream(1, true, true, true, true, true)))
-                            arrayImageDish[0].setImageResource((R.drawable.icecreamwithposypkavanille));
-                        else if (dishes[0].equals(new Icecream(2, true, true, true, true, true)))
-                            arrayImageDish[0].setImageResource((R.drawable.icecreamwithposypkachocolate));
-                        else if (dishes[0].equals(new Icecream(3, true, true, true, true, true)))
-                            arrayImageDish[0].setImageResource((R.drawable.icecreamwithposypkastrawberry));
-                        else if (dishes[0].equals(new Dough(0, false)))
-                            arrayImageDish[0].setImageResource((R.drawable.dough));
-                        else if (dishes[0].equals(new Dough(1, true)))
-                            arrayImageDish[0].setImageResource((R.drawable.doughvanille));
-                        else if (dishes[0].equals(new Dough(2, true)))
-                            arrayImageDish[0].setImageResource((R.drawable.doughchocolate));
-                        else if (dishes[0].equals(new Dough(3, true)))
-                            arrayImageDish[0].setImageResource((R.drawable.doughstrawberry));
-                        else
-                            arrayImageDish[0].setImageResource((R.drawable.dish));
-                    } else {
-                        if (dishes[0].equals(new Donut(0, true, false, false)))
-                            arrayImageDish[0].setImageResource(R.drawable.donutwithposypkastrawberryon); // ИСПРАВИТЬ ИСПРАВИТЬ ИСПРАВИТЬ ИСПРАВТЬ
-                        else if (dishes[0].equals(new Donut(1, true, true, false)))
-                            arrayImageDish[0].setImageResource(R.drawable.donutwithoutposypkavanilleon);
-                        else if (dishes[0].equals(new Donut(2, true, true, false)))
-                            arrayImageDish[0].setImageResource(R.drawable.donutwithoutposypkachocolateon);
-                        else if (dishes[0].equals(new Donut(3, true, true, false)))
-                            arrayImageDish[0].setImageResource(R.drawable.donutwithoutposypkastrawberryon);
-                        else if (dishes[0].equals(new Donut(1, true, true, true)))
-                            arrayImageDish[0].setImageResource(R.drawable.donutwithposypkavanilleon);
-                        else if (dishes[0].equals(new Donut(2, true, true, false)))
-                            arrayImageDish[0].setImageResource(R.drawable.donutwithposypkachocolateon);
-                        else if (dishes[0].equals(new Donut(3, true, true, false)))
-                            arrayImageDish[0].setImageResource(R.drawable.donutwithposypkastrawberryon);
-                        else if (dishes[0].equals(new Cake(1, true, true, false, false)))
-                            arrayImageDish[0].setImageResource(R.drawable.cakewithoutfruitchocolateon); //ИСПРАВИТЬ ИСПРАВИТЬ ИСПРАВИТЬ ИСПРАВИТЬ
-                        else if (dishes[0].equals(new Cake(2, true, true, false, false)))
-                            arrayImageDish[0].setImageResource(R.drawable.cakewithoutfruitchocolateon); //ИСПРАВИТЬ ИСПРАВИТЬ ИСПРАВИТЬ ИСПРАВИТЬ
-                        else if (dishes[0].equals(new Cake(3, true, true, false, false)))
-                            arrayImageDish[0].setImageResource(R.drawable.cakewithoutfruitchocolateon); //ИСПРАВИТЬ ИСПРАВИТЬ ИСПРАВИТЬ ИСПРАВИТЬ
-                        else if (dishes[0].equals(new Cake(1, true, true, true, false)))
-                            arrayImageDish[0].setImageResource(R.drawable.cakewithoutfruitvanilleon);
-                        else if (dishes[0].equals(new Cake(2, true, true, true, false)))
-                            arrayImageDish[0].setImageResource(R.drawable.cakewithoutfruitchocolateon);
-                        else if (dishes[0].equals(new Cake(3, true, true, true, false)))
-                            arrayImageDish[0].setImageResource(R.drawable.cakewithoutfruitstrawberryon);
-                        else if (dishes[0].equals(new Cake(1, true, true, true, true)))
-                            arrayImageDish[0].setImageResource(R.drawable.cakewithfruitvanilleon);
-                        else if (dishes[0].equals(new Cake(2, true, true, true, true)))
-                            arrayImageDish[0].setImageResource(R.drawable.cakewithfruitchocolateon);
-                        else if (dishes[0].equals(new Cake(3, true, true, true, true)))
-                            arrayImageDish[0].setImageResource(R.drawable.cakewithfruitstrawberryon);
-                        else if (dishes[0].equals(new Croissant(1, true, true)))
-                            arrayImageDish[0].setImageResource(R.drawable.croissantvanilleon);
-                        else if (dishes[0].equals(new Croissant(2, true, true)))
-                            arrayImageDish[0].setImageResource(R.drawable.croissantchocolateon);
-                        else if (dishes[0].equals(new Croissant(3, true, true)))
-                            arrayImageDish[0].setImageResource(R.drawable.croissantstrawberryon);
-                        /*else if (dishes[0].equals(new Icecream(0, false, true, false, false, false)))
-                            arrayImageDish[0].setImageResource(R.drawable.hornoficecreamon);
-                        else if (dishes[0].equals(new Icecream(0, false, true, true, false, false)))
-                            arrayImageDish[0].setImageResource((R.drawable.hornoficecreamonstandarton));*/
-                        else if(dishes[0] instanceof Icecream && (((Icecream)dishes[0]).equals(new Icecream(0,false,true,false,false,false))))
-                            arrayImageDish[0].setImageResource((R.drawable.hornoficecreamon));
-                        else if(dishes[0] instanceof Icecream && (((Icecream)dishes[0]).equals(new Icecream(0,false,true,true,false,false))))
-                            arrayImageDish[0].setImageResource((R.drawable.hornoficecreamonstandarton));
-                        else if (dishes[0].equals(new Icecream(1, true, true, true, false, false)))
-                            arrayImageDish[0].setImageResource((R.drawable.hornoficecreamonvanilleon));
-                        else if (dishes[0].equals(new Icecream(2, true, true, true, false, false)))
-                            arrayImageDish[0].setImageResource((R.drawable.hornoficecreamonchocolateon));
-                        else if (dishes[0].equals(new Icecream(3, true, true, true, false, false)))
-                            arrayImageDish[0].setImageResource((R.drawable.hornoficecreamonstrawberryon));
-                        else if (dishes[0].equals(new Icecream(1, true, true, true, true, false)))
-                            arrayImageDish[0].setImageResource((R.drawable.icecreamwithoutposypkavanilleon));
-                        else if (dishes[0].equals(new Icecream(2, true, true, true, true, false)))
-                            arrayImageDish[0].setImageResource((R.drawable.icecreamwithoutposypkachocolateon));
-                        else if (dishes[0].equals(new Icecream(3, true, true, true, true, false)))
-                            arrayImageDish[0].setImageResource((R.drawable.icecreamwithoutposypkastrawberryon));
-                        else if (dishes[0].equals(new Icecream(1, true, true, true, true, true)))
-                            arrayImageDish[0].setImageResource((R.drawable.icecreamwithposypkavanilleon));
-                        else if (dishes[0].equals(new Icecream(2, true, true, true, true, true)))
-                            arrayImageDish[0].setImageResource((R.drawable.icecreamwithposypkachocolateon));
-                        else if (dishes[0].equals(new Icecream(3, true, true, true, true, true)))
-                            arrayImageDish[0].setImageResource((R.drawable.icecreamwithposypkastrawberryon));
-                        else if (dishes[0].equals(new Dough(0, false)))
-                            arrayImageDish[0].setImageResource((R.drawable.doughon));
-                        else if (dishes[0].equals(new Dough(1, true)))
-                            arrayImageDish[0].setImageResource((R.drawable.doughvanilleon));
-                        else if (dishes[0].equals(new Dough(2, true)))
-                            arrayImageDish[0].setImageResource((R.drawable.doughchocolateon));
-                        else if (dishes[0].equals(new Dough(3, true)))
-                            arrayImageDish[0].setImageResource((R.drawable.doughstrawberryon));
-                        else
-                            arrayImageDish[0].setImageResource(R.drawable.dishon);
-                    }
-                    boolean change = false;
+                    dishes[0].setImage(arrayImageDish[0],arrayFlags[0]);
+                    change = false;
                     if (arrayFlags[0]) {
                         arrayFlags[0] = !arrayFlags[0];
                         change = true;
@@ -255,150 +106,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (!arrayFlagsIsEmpty[1]) {
-                    if (arrayFlags[1]) {
-                        if (dishes[1].equals(new Donut(0, true, false, false)))
-                            arrayImageDish[1].setImageResource(R.drawable.donutwithposypkastrawberry); // ИСПРАВИТЬ ИСПРАВИТЬ ИСПРАВИТЬ ИСПРАВТЬ
-                        else if (dishes[1].equals(new Donut(1, true, true, false)))
-                            arrayImageDish[1].setImageResource(R.drawable.donutwithoutposypkavanille);
-                        else if (dishes[1].equals(new Donut(2, true, true, false)))
-                            arrayImageDish[1].setImageResource(R.drawable.donutwithoutposypkachocolate);
-                        else if (dishes[1].equals(new Donut(3, true, true, false)))
-                            arrayImageDish[1].setImageResource(R.drawable.donutwithoutposypkastrawberry);
-                        else if (dishes[1].equals(new Donut(1, true, true, true)))
-                            arrayImageDish[1].setImageResource(R.drawable.donutwithposypkavanille);
-                        else if (dishes[1].equals(new Donut(2, true, true, false)))
-                            arrayImageDish[1].setImageResource(R.drawable.donutwithposypkachocolate);
-                        else if (dishes[1].equals(new Donut(3, true, true, false)))
-                            arrayImageDish[1].setImageResource(R.drawable.donutwithposypkastrawberry);
-                        else if (dishes[1].equals(new Cake(1, true, true, false, false)))
-                            arrayImageDish[1].setImageResource(R.drawable.cakewithoutfruitchocolate); //ИСПРАВИТЬ ИСПРАВИТЬ ИСПРАВИТЬ ИСПРАВИТЬ
-                        else if (dishes[1].equals(new Cake(2, true, true, false, false)))
-                            arrayImageDish[1].setImageResource(R.drawable.cakewithoutfruitchocolate); //ИСПРАВИТЬ ИСПРАВИТЬ ИСПРАВИТЬ ИСПРАВИТЬ
-                        else if (dishes[1].equals(new Cake(3, true, true, false, false)))
-                            arrayImageDish[1].setImageResource(R.drawable.cakewithoutfruitchocolate); //ИСПРАВИТЬ ИСПРАВИТЬ ИСПРАВИТЬ ИСПРАВИТЬ
-                        else if (dishes[1].equals(new Cake(1, true, true, true, false)))
-                            arrayImageDish[1].setImageResource(R.drawable.cakewithoutfruitvanille);
-                        else if (dishes[1].equals(new Cake(2, true, true, true, false)))
-                            arrayImageDish[1].setImageResource(R.drawable.cakewithoutfruitchocolate);
-                        else if (dishes[1].equals(new Cake(3, true, true, true, false)))
-                            arrayImageDish[1].setImageResource(R.drawable.cakewithoutfruitstrawberry);
-                        else if (dishes[1].equals(new Cake(1, true, true, true, true)))
-                            arrayImageDish[1].setImageResource(R.drawable.cakewithfruitvanille);
-                        else if (dishes[1].equals(new Cake(2, true, true, true, true)))
-                            arrayImageDish[1].setImageResource(R.drawable.cakewithfruitchocolate);
-                        else if (dishes[1].equals(new Cake(3, true, true, true, true)))
-                            arrayImageDish[1].setImageResource(R.drawable.cakewithfruitstrawberry);
-                        else if (dishes[1].equals(new Croissant(1, true, true)))
-                            arrayImageDish[1].setImageResource(R.drawable.croissantvanille);
-                        else if (dishes[1].equals(new Croissant(2, true, true)))
-                            arrayImageDish[1].setImageResource(R.drawable.croissantchocolate);
-                        else if (dishes[1].equals(new Croissant(3, true, true)))
-                            arrayImageDish[1].setImageResource(R.drawable.croissantstrawberry);
-                        else if (dishes[1].equals(new Icecream(0, false, true, false, false, false)))
-                            arrayImageDish[1].setImageResource(R.drawable.hornoficecream);
-                        else if (dishes[1].equals(new Icecream(0, false, true, true, false, false)))
-                            arrayImageDish[1].setImageResource((R.drawable.hornoficecreamonstandart));
-                        else if (dishes[1].equals(new Icecream(1, true, true, true, false, false)))
-                            arrayImageDish[1].setImageResource((R.drawable.hornoficecreamonvanille));
-                        else if (dishes[1].equals(new Icecream(2, true, true, true, false, false)))
-                            arrayImageDish[1].setImageResource((R.drawable.hornoficecreamonchocolate));
-                        else if (dishes[1].equals(new Icecream(3, true, true, true, false, false)))
-                            arrayImageDish[1].setImageResource((R.drawable.hornoficecreamonstrawberry));
-                        else if (dishes[1].equals(new Icecream(1, true, true, true, true, false)))
-                            arrayImageDish[1].setImageResource((R.drawable.icecreamwithoutposypkavanille));
-                        else if (dishes[1].equals(new Icecream(2, true, true, true, true, false)))
-                            arrayImageDish[1].setImageResource((R.drawable.icecreamwithoutposypkachocolate));
-                        else if (dishes[1].equals(new Icecream(3, true, true, true, true, false)))
-                            arrayImageDish[1].setImageResource((R.drawable.icecreamwithoutposypkastrawberry));
-                        else if (dishes[1].equals(new Icecream(1, true, true, true, true, true)))
-                            arrayImageDish[1].setImageResource((R.drawable.icecreamwithposypkavanille));
-                        else if (dishes[1].equals(new Icecream(2, true, true, true, true, true)))
-                            arrayImageDish[1].setImageResource((R.drawable.icecreamwithposypkachocolate));
-                        else if (dishes[1].equals(new Icecream(3, true, true, true, true, true)))
-                            arrayImageDish[1].setImageResource((R.drawable.icecreamwithposypkastrawberry));
-                        else if (dishes[1].equals(new Dough(0, false)))
-                            arrayImageDish[1].setImageResource((R.drawable.dough));
-                        else if (dishes[1].equals(new Dough(1, true)))
-                            arrayImageDish[1].setImageResource((R.drawable.doughvanille));
-                        else if (dishes[1].equals(new Dough(2, true)))
-                            arrayImageDish[1].setImageResource((R.drawable.doughchocolate));
-                        else if (dishes[1].equals(new Dough(3, true)))
-                            arrayImageDish[1].setImageResource((R.drawable.doughstrawberry));
-                        else
-                            arrayImageDish[1].setImageResource((R.drawable.dish));
-                    } else {
-                        if (dishes[1].equals(new Donut(0, true, false, false)))
-                            arrayImageDish[1].setImageResource(R.drawable.donutwithposypkastrawberryon); // ИСПРАВИТЬ ИСПРАВИТЬ ИСПРАВИТЬ ИСПРАВТЬ
-                        else if (dishes[1].equals(new Donut(1, true, true, false)))
-                            arrayImageDish[1].setImageResource(R.drawable.donutwithoutposypkavanilleon);
-                        else if (dishes[1].equals(new Donut(2, true, true, false)))
-                            arrayImageDish[1].setImageResource(R.drawable.donutwithoutposypkachocolateon);
-                        else if (dishes[1].equals(new Donut(3, true, true, false)))
-                            arrayImageDish[1].setImageResource(R.drawable.donutwithoutposypkastrawberryon);
-                        else if (dishes[1].equals(new Donut(1, true, true, true)))
-                            arrayImageDish[1].setImageResource(R.drawable.donutwithposypkavanilleon);
-                        else if (dishes[1].equals(new Donut(2, true, true, false)))
-                            arrayImageDish[1].setImageResource(R.drawable.donutwithposypkachocolateon);
-                        else if (dishes[1].equals(new Donut(3, true, true, false)))
-                            arrayImageDish[1].setImageResource(R.drawable.donutwithposypkastrawberryon);
-                        else if (dishes[1].equals(new Cake(1, true, true, false, false)))
-                            arrayImageDish[1].setImageResource(R.drawable.cakewithoutfruitchocolateon); //ИСПРАВИТЬ ИСПРАВИТЬ ИСПРАВИТЬ ИСПРАВИТЬ
-                        else if (dishes[1].equals(new Cake(2, true, true, false, false)))
-                            arrayImageDish[1].setImageResource(R.drawable.cakewithoutfruitchocolateon); //ИСПРАВИТЬ ИСПРАВИТЬ ИСПРАВИТЬ ИСПРАВИТЬ
-                        else if (dishes[1].equals(new Cake(3, true, true, false, false)))
-                            arrayImageDish[1].setImageResource(R.drawable.cakewithoutfruitchocolateon); //ИСПРАВИТЬ ИСПРАВИТЬ ИСПРАВИТЬ ИСПРАВИТЬ
-                        else if (dishes[1].equals(new Cake(1, true, true, true, false)))
-                            arrayImageDish[1].setImageResource(R.drawable.cakewithoutfruitvanilleon);
-                        else if (dishes[1].equals(new Cake(2, true, true, true, false)))
-                            arrayImageDish[1].setImageResource(R.drawable.cakewithoutfruitchocolateon);
-                        else if (dishes[1].equals(new Cake(3, true, true, true, false)))
-                            arrayImageDish[1].setImageResource(R.drawable.cakewithoutfruitstrawberryon);
-                        else if (dishes[1].equals(new Cake(1, true, true, true, true)))
-                            arrayImageDish[1].setImageResource(R.drawable.cakewithfruitvanilleon);
-                        else if (dishes[1].equals(new Cake(2, true, true, true, true)))
-                            arrayImageDish[1].setImageResource(R.drawable.cakewithfruitchocolateon);
-                        else if (dishes[1].equals(new Cake(3, true, true, true, true)))
-                            arrayImageDish[1].setImageResource(R.drawable.cakewithfruitstrawberryon);
-                        else if (dishes[1].equals(new Croissant(1, true, true)))
-                            arrayImageDish[1].setImageResource(R.drawable.croissantvanilleon);
-                        else if (dishes[1].equals(new Croissant(2, true, true)))
-                            arrayImageDish[1].setImageResource(R.drawable.croissantchocolateon);
-                        else if (dishes[1].equals(new Croissant(3, true, true)))
-                            arrayImageDish[1].setImageResource(R.drawable.croissantstrawberryon);
-                        else if (dishes[1].equals(new Icecream(0, false, true, false, false, false)))
-                            arrayImageDish[1].setImageResource(R.drawable.hornoficecreamon);
-                        else if (dishes[1].equals(new Icecream(0, false, true, true, false, false)))
-                            arrayImageDish[1].setImageResource((R.drawable.hornoficecreamonstandarton));
-                        else if (dishes[1].equals(new Icecream(1, true, true, true, false, false)))
-                            arrayImageDish[1].setImageResource((R.drawable.hornoficecreamonvanilleon));
-                        else if (dishes[1].equals(new Icecream(2, true, true, true, false, false)))
-                            arrayImageDish[1].setImageResource((R.drawable.hornoficecreamonchocolateon));
-                        else if (dishes[1].equals(new Icecream(3, true, true, true, false, false)))
-                            arrayImageDish[1].setImageResource((R.drawable.hornoficecreamonstrawberryon));
-                        else if (dishes[1].equals(new Icecream(1, true, true, true, true, false)))
-                            arrayImageDish[1].setImageResource((R.drawable.icecreamwithoutposypkavanilleon));
-                        else if (dishes[1].equals(new Icecream(2, true, true, true, true, false)))
-                            arrayImageDish[1].setImageResource((R.drawable.icecreamwithoutposypkachocolateon));
-                        else if (dishes[1].equals(new Icecream(3, true, true, true, true, false)))
-                            arrayImageDish[1].setImageResource((R.drawable.icecreamwithoutposypkastrawberryon));
-                        else if (dishes[1].equals(new Icecream(1, true, true, true, true, true)))
-                            arrayImageDish[1].setImageResource((R.drawable.icecreamwithposypkavanilleon));
-                        else if (dishes[1].equals(new Icecream(2, true, true, true, true, true)))
-                            arrayImageDish[1].setImageResource((R.drawable.icecreamwithposypkachocolateon));
-                        else if (dishes[1].equals(new Icecream(3, true, true, true, true, true)))
-                            arrayImageDish[1].setImageResource((R.drawable.icecreamwithposypkastrawberryon));
-                        else if (dishes[1].equals(new Dough(0, false)))
-                            arrayImageDish[1].setImageResource((R.drawable.doughon));
-                        else if (dishes[1].equals(new Dough(1, true)))
-                            arrayImageDish[1].setImageResource((R.drawable.doughvanilleon));
-                        else if (dishes[1].equals(new Dough(2, true)))
-                            arrayImageDish[1].setImageResource((R.drawable.doughchocolateon));
-                        else if (dishes[1].equals(new Dough(3, true)))
-                            arrayImageDish[1].setImageResource((R.drawable.doughstrawberryon));
-                        else
-                            arrayImageDish[1].setImageResource(R.drawable.dishon);
-                    }
-                    boolean change = false;
+                    dishes[1].setImage(arrayImageDish[1],arrayFlags[1]);
+                    change = false;
                     if (arrayFlags[1]) {
                         arrayFlags[1] = !arrayFlags[1];
                         change = true;
@@ -421,150 +130,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (!arrayFlagsIsEmpty[2]) {
-                    if (arrayFlags[2]) {
-                        if (dishes[2].equals(new Donut(0, true, false, false)))
-                            arrayImageDish[2].setImageResource(R.drawable.donutwithposypkastrawberry); // ИСПРАВИТЬ ИСПРАВИТЬ ИСПРАВИТЬ ИСПРАВТЬ
-                        else if (dishes[2].equals(new Donut(1, true, true, false)))
-                            arrayImageDish[2].setImageResource(R.drawable.donutwithoutposypkavanille);
-                        else if (dishes[2].equals(new Donut(2, true, true, false)))
-                            arrayImageDish[2].setImageResource(R.drawable.donutwithoutposypkachocolate);
-                        else if (dishes[2].equals(new Donut(3, true, true, false)))
-                            arrayImageDish[2].setImageResource(R.drawable.donutwithoutposypkastrawberry);
-                        else if (dishes[2].equals(new Donut(1, true, true, true)))
-                            arrayImageDish[2].setImageResource(R.drawable.donutwithposypkavanille);
-                        else if (dishes[2].equals(new Donut(2, true, true, false)))
-                            arrayImageDish[2].setImageResource(R.drawable.donutwithposypkachocolate);
-                        else if (dishes[2].equals(new Donut(3, true, true, false)))
-                            arrayImageDish[2].setImageResource(R.drawable.donutwithposypkastrawberry);
-                        else if (dishes[2].equals(new Cake(1, true, true, false, false)))
-                            arrayImageDish[2].setImageResource(R.drawable.cakewithoutfruitchocolate); //ИСПРАВИТЬ ИСПРАВИТЬ ИСПРАВИТЬ ИСПРАВИТЬ
-                        else if (dishes[2].equals(new Cake(2, true, true, false, false)))
-                            arrayImageDish[2].setImageResource(R.drawable.cakewithoutfruitchocolate); //ИСПРАВИТЬ ИСПРАВИТЬ ИСПРАВИТЬ ИСПРАВИТЬ
-                        else if (dishes[2].equals(new Cake(3, true, true, false, false)))
-                            arrayImageDish[2].setImageResource(R.drawable.cakewithoutfruitchocolate); //ИСПРАВИТЬ ИСПРАВИТЬ ИСПРАВИТЬ ИСПРАВИТЬ
-                        else if (dishes[2].equals(new Cake(1, true, true, true, false)))
-                            arrayImageDish[2].setImageResource(R.drawable.cakewithoutfruitvanille);
-                        else if (dishes[2].equals(new Cake(2, true, true, true, false)))
-                            arrayImageDish[2].setImageResource(R.drawable.cakewithoutfruitchocolate);
-                        else if (dishes[2].equals(new Cake(3, true, true, true, false)))
-                            arrayImageDish[2].setImageResource(R.drawable.cakewithoutfruitstrawberry);
-                        else if (dishes[2].equals(new Cake(1, true, true, true, true)))
-                            arrayImageDish[2].setImageResource(R.drawable.cakewithfruitvanille);
-                        else if (dishes[2].equals(new Cake(2, true, true, true, true)))
-                            arrayImageDish[2].setImageResource(R.drawable.cakewithfruitchocolate);
-                        else if (dishes[2].equals(new Cake(3, true, true, true, true)))
-                            arrayImageDish[2].setImageResource(R.drawable.cakewithfruitstrawberry);
-                        else if (dishes[2].equals(new Croissant(1, true, true)))
-                            arrayImageDish[2].setImageResource(R.drawable.croissantvanille);
-                        else if (dishes[2].equals(new Croissant(2, true, true)))
-                            arrayImageDish[2].setImageResource(R.drawable.croissantchocolate);
-                        else if (dishes[2].equals(new Croissant(3, true, true)))
-                            arrayImageDish[2].setImageResource(R.drawable.croissantstrawberry);
-                        else if (dishes[2].equals(new Icecream(0, false, true, false, false, false)))
-                            arrayImageDish[2].setImageResource(R.drawable.hornoficecream);
-                        else if (dishes[2].equals(new Icecream(0, false, true, true, false, false)))
-                            arrayImageDish[2].setImageResource((R.drawable.hornoficecreamonstandart));
-                        else if (dishes[2].equals(new Icecream(1, true, true, true, false, false)))
-                            arrayImageDish[2].setImageResource((R.drawable.hornoficecreamonvanille));
-                        else if (dishes[2].equals(new Icecream(2, true, true, true, false, false)))
-                            arrayImageDish[2].setImageResource((R.drawable.hornoficecreamonchocolate));
-                        else if (dishes[2].equals(new Icecream(3, true, true, true, false, false)))
-                            arrayImageDish[2].setImageResource((R.drawable.hornoficecreamonstrawberry));
-                        else if (dishes[2].equals(new Icecream(1, true, true, true, true, false)))
-                            arrayImageDish[2].setImageResource((R.drawable.icecreamwithoutposypkavanille));
-                        else if (dishes[2].equals(new Icecream(2, true, true, true, true, false)))
-                            arrayImageDish[2].setImageResource((R.drawable.icecreamwithoutposypkachocolate));
-                        else if (dishes[2].equals(new Icecream(3, true, true, true, true, false)))
-                            arrayImageDish[2].setImageResource((R.drawable.icecreamwithoutposypkastrawberry));
-                        else if (dishes[2].equals(new Icecream(1, true, true, true, true, true)))
-                            arrayImageDish[2].setImageResource((R.drawable.icecreamwithposypkavanille));
-                        else if (dishes[2].equals(new Icecream(2, true, true, true, true, true)))
-                            arrayImageDish[2].setImageResource((R.drawable.icecreamwithposypkachocolate));
-                        else if (dishes[2].equals(new Icecream(3, true, true, true, true, true)))
-                            arrayImageDish[2].setImageResource((R.drawable.icecreamwithposypkastrawberry));
-                        else if (dishes[2].equals(new Dough(0, false)))
-                            arrayImageDish[2].setImageResource((R.drawable.dough));
-                        else if (dishes[2].equals(new Dough(1, true)))
-                            arrayImageDish[2].setImageResource((R.drawable.doughvanille));
-                        else if (dishes[2].equals(new Dough(2, true)))
-                            arrayImageDish[2].setImageResource((R.drawable.doughchocolate));
-                        else if (dishes[2].equals(new Dough(3, true)))
-                            arrayImageDish[2].setImageResource((R.drawable.doughstrawberry));
-                        else
-                            arrayImageDish[2].setImageResource((R.drawable.dish));
-                    } else {
-                        if (dishes[2].equals(new Donut(0, true, false, false)))
-                            arrayImageDish[2].setImageResource(R.drawable.donutwithposypkastrawberryon); // ИСПРАВИТЬ ИСПРАВИТЬ ИСПРАВИТЬ ИСПРАВТЬ
-                        else if (dishes[2].equals(new Donut(1, true, true, false)))
-                            arrayImageDish[2].setImageResource(R.drawable.donutwithoutposypkavanilleon);
-                        else if (dishes[2].equals(new Donut(2, true, true, false)))
-                            arrayImageDish[2].setImageResource(R.drawable.donutwithoutposypkachocolateon);
-                        else if (dishes[2].equals(new Donut(3, true, true, false)))
-                            arrayImageDish[2].setImageResource(R.drawable.donutwithoutposypkastrawberryon);
-                        else if (dishes[2].equals(new Donut(1, true, true, true)))
-                            arrayImageDish[2].setImageResource(R.drawable.donutwithposypkavanilleon);
-                        else if (dishes[2].equals(new Donut(2, true, true, false)))
-                            arrayImageDish[2].setImageResource(R.drawable.donutwithposypkachocolateon);
-                        else if (dishes[2].equals(new Donut(3, true, true, false)))
-                            arrayImageDish[2].setImageResource(R.drawable.donutwithposypkastrawberryon);
-                        else if (dishes[2].equals(new Cake(1, true, true, false, false)))
-                            arrayImageDish[2].setImageResource(R.drawable.cakewithoutfruitchocolateon); //ИСПРАВИТЬ ИСПРАВИТЬ ИСПРАВИТЬ ИСПРАВИТЬ
-                        else if (dishes[2].equals(new Cake(2, true, true, false, false)))
-                            arrayImageDish[2].setImageResource(R.drawable.cakewithoutfruitchocolateon); //ИСПРАВИТЬ ИСПРАВИТЬ ИСПРАВИТЬ ИСПРАВИТЬ
-                        else if (dishes[2].equals(new Cake(3, true, true, false, false)))
-                            arrayImageDish[2].setImageResource(R.drawable.cakewithoutfruitchocolateon); //ИСПРАВИТЬ ИСПРАВИТЬ ИСПРАВИТЬ ИСПРАВИТЬ
-                        else if (dishes[2].equals(new Cake(1, true, true, true, false)))
-                            arrayImageDish[2].setImageResource(R.drawable.cakewithoutfruitvanilleon);
-                        else if (dishes[2].equals(new Cake(2, true, true, true, false)))
-                            arrayImageDish[2].setImageResource(R.drawable.cakewithoutfruitchocolateon);
-                        else if (dishes[2].equals(new Cake(3, true, true, true, false)))
-                            arrayImageDish[2].setImageResource(R.drawable.cakewithoutfruitstrawberryon);
-                        else if (dishes[2].equals(new Cake(1, true, true, true, true)))
-                            arrayImageDish[2].setImageResource(R.drawable.cakewithfruitvanilleon);
-                        else if (dishes[2].equals(new Cake(2, true, true, true, true)))
-                            arrayImageDish[2].setImageResource(R.drawable.cakewithfruitchocolateon);
-                        else if (dishes[2].equals(new Cake(3, true, true, true, true)))
-                            arrayImageDish[2].setImageResource(R.drawable.cakewithfruitstrawberryon);
-                        else if (dishes[2].equals(new Croissant(1, true, true)))
-                            arrayImageDish[2].setImageResource(R.drawable.croissantvanilleon);
-                        else if (dishes[2].equals(new Croissant(2, true, true)))
-                            arrayImageDish[2].setImageResource(R.drawable.croissantchocolateon);
-                        else if (dishes[2].equals(new Croissant(3, true, true)))
-                            arrayImageDish[2].setImageResource(R.drawable.croissantstrawberryon);
-                        else if (dishes[2].equals(new Icecream(0, false, true, false, false, false)))
-                            arrayImageDish[2].setImageResource(R.drawable.hornoficecreamon);
-                        else if (dishes[2].equals(new Icecream(0, false, true, true, false, false)))
-                            arrayImageDish[2].setImageResource((R.drawable.hornoficecreamonstandarton));
-                        else if (dishes[2].equals(new Icecream(1, true, true, true, false, false)))
-                            arrayImageDish[2].setImageResource((R.drawable.hornoficecreamonvanilleon));
-                        else if (dishes[2].equals(new Icecream(2, true, true, true, false, false)))
-                            arrayImageDish[2].setImageResource((R.drawable.hornoficecreamonchocolateon));
-                        else if (dishes[2].equals(new Icecream(3, true, true, true, false, false)))
-                            arrayImageDish[2].setImageResource((R.drawable.hornoficecreamonstrawberryon));
-                        else if (dishes[2].equals(new Icecream(1, true, true, true, true, false)))
-                            arrayImageDish[2].setImageResource((R.drawable.icecreamwithoutposypkavanilleon));
-                        else if (dishes[2].equals(new Icecream(2, true, true, true, true, false)))
-                            arrayImageDish[2].setImageResource((R.drawable.icecreamwithoutposypkachocolateon));
-                        else if (dishes[2].equals(new Icecream(3, true, true, true, true, false)))
-                            arrayImageDish[2].setImageResource((R.drawable.icecreamwithoutposypkastrawberryon));
-                        else if (dishes[2].equals(new Icecream(1, true, true, true, true, true)))
-                            arrayImageDish[2].setImageResource((R.drawable.icecreamwithposypkavanilleon));
-                        else if (dishes[2].equals(new Icecream(2, true, true, true, true, true)))
-                            arrayImageDish[2].setImageResource((R.drawable.icecreamwithposypkachocolateon));
-                        else if (dishes[2].equals(new Icecream(3, true, true, true, true, true)))
-                            arrayImageDish[2].setImageResource((R.drawable.icecreamwithposypkastrawberryon));
-                        else if (dishes[2].equals(new Dough(0, false)))
-                            arrayImageDish[2].setImageResource((R.drawable.doughon));
-                        else if (dishes[2].equals(new Dough(1, true)))
-                            arrayImageDish[2].setImageResource((R.drawable.doughvanilleon));
-                        else if (dishes[2].equals(new Dough(2, true)))
-                            arrayImageDish[2].setImageResource((R.drawable.doughchocolateon));
-                        else if (dishes[2].equals(new Dough(3, true)))
-                            arrayImageDish[2].setImageResource((R.drawable.doughstrawberryon));
-                        else
-                            arrayImageDish[2].setImageResource(R.drawable.dishon);
-                    }
-                    boolean change = false;
+                    dishes[2].setImage(arrayImageDish[2],arrayFlags[2]);
+                    change = false;
                     if (arrayFlags[2]) {
                         arrayFlags[2] = !arrayFlags[2];
                         change = true;
@@ -587,150 +154,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (!arrayFlagsIsEmpty[3]) {
-                    if (arrayFlags[3]) {
-                        if (dishes[3].equals(new Donut(0, true, false, false)))
-                            arrayImageDish[3].setImageResource(R.drawable.donutwithposypkastrawberry); // ИСПРАВИТЬ ИСПРАВИТЬ ИСПРАВИТЬ ИСПРАВТЬ
-                        else if (dishes[3].equals(new Donut(1, true, true, false)))
-                            arrayImageDish[3].setImageResource(R.drawable.donutwithoutposypkavanille);
-                        else if (dishes[3].equals(new Donut(2, true, true, false)))
-                            arrayImageDish[3].setImageResource(R.drawable.donutwithoutposypkachocolate);
-                        else if (dishes[3].equals(new Donut(3, true, true, false)))
-                            arrayImageDish[3].setImageResource(R.drawable.donutwithoutposypkastrawberry);
-                        else if (dishes[3].equals(new Donut(1, true, true, true)))
-                            arrayImageDish[3].setImageResource(R.drawable.donutwithposypkavanille);
-                        else if (dishes[3].equals(new Donut(2, true, true, false)))
-                            arrayImageDish[3].setImageResource(R.drawable.donutwithposypkachocolate);
-                        else if (dishes[3].equals(new Donut(3, true, true, false)))
-                            arrayImageDish[3].setImageResource(R.drawable.donutwithposypkastrawberry);
-                        else if (dishes[3].equals(new Cake(1, true, true, false, false)))
-                            arrayImageDish[3].setImageResource(R.drawable.cakewithoutfruitchocolate); //ИСПРАВИТЬ ИСПРАВИТЬ ИСПРАВИТЬ ИСПРАВИТЬ
-                        else if (dishes[3].equals(new Cake(2, true, true, false, false)))
-                            arrayImageDish[3].setImageResource(R.drawable.cakewithoutfruitchocolate); //ИСПРАВИТЬ ИСПРАВИТЬ ИСПРАВИТЬ ИСПРАВИТЬ
-                        else if (dishes[3].equals(new Cake(3, true, true, false, false)))
-                            arrayImageDish[3].setImageResource(R.drawable.cakewithoutfruitchocolate); //ИСПРАВИТЬ ИСПРАВИТЬ ИСПРАВИТЬ ИСПРАВИТЬ
-                        else if (dishes[3].equals(new Cake(1, true, true, true, false)))
-                            arrayImageDish[3].setImageResource(R.drawable.cakewithoutfruitvanille);
-                        else if (dishes[3].equals(new Cake(2, true, true, true, false)))
-                            arrayImageDish[3].setImageResource(R.drawable.cakewithoutfruitchocolate);
-                        else if (dishes[3].equals(new Cake(3, true, true, true, false)))
-                            arrayImageDish[3].setImageResource(R.drawable.cakewithoutfruitstrawberry);
-                        else if (dishes[3].equals(new Cake(1, true, true, true, true)))
-                            arrayImageDish[3].setImageResource(R.drawable.cakewithfruitvanille);
-                        else if (dishes[3].equals(new Cake(2, true, true, true, true)))
-                            arrayImageDish[3].setImageResource(R.drawable.cakewithfruitchocolate);
-                        else if (dishes[3].equals(new Cake(3, true, true, true, true)))
-                            arrayImageDish[3].setImageResource(R.drawable.cakewithfruitstrawberry);
-                        else if (dishes[3].equals(new Croissant(1, true, true)))
-                            arrayImageDish[3].setImageResource(R.drawable.croissantvanille);
-                        else if (dishes[3].equals(new Croissant(2, true, true)))
-                            arrayImageDish[3].setImageResource(R.drawable.croissantchocolate);
-                        else if (dishes[3].equals(new Croissant(3, true, true)))
-                            arrayImageDish[3].setImageResource(R.drawable.croissantstrawberry);
-                        else if (dishes[3].equals(new Icecream(0, false, true, false, false, false)))
-                            arrayImageDish[3].setImageResource(R.drawable.hornoficecream);
-                        else if (dishes[3].equals(new Icecream(0, false, true, true, false, false)))
-                            arrayImageDish[3].setImageResource((R.drawable.hornoficecreamonstandart));
-                        else if (dishes[3].equals(new Icecream(1, true, true, true, false, false)))
-                            arrayImageDish[3].setImageResource((R.drawable.hornoficecreamonvanille));
-                        else if (dishes[3].equals(new Icecream(2, true, true, true, false, false)))
-                            arrayImageDish[3].setImageResource((R.drawable.hornoficecreamonchocolate));
-                        else if (dishes[3].equals(new Icecream(3, true, true, true, false, false)))
-                            arrayImageDish[3].setImageResource((R.drawable.hornoficecreamonstrawberry));
-                        else if (dishes[3].equals(new Icecream(1, true, true, true, true, false)))
-                            arrayImageDish[3].setImageResource((R.drawable.icecreamwithoutposypkavanille));
-                        else if (dishes[3].equals(new Icecream(2, true, true, true, true, false)))
-                            arrayImageDish[3].setImageResource((R.drawable.icecreamwithoutposypkachocolate));
-                        else if (dishes[3].equals(new Icecream(3, true, true, true, true, false)))
-                            arrayImageDish[3].setImageResource((R.drawable.icecreamwithoutposypkastrawberry));
-                        else if (dishes[3].equals(new Icecream(1, true, true, true, true, true)))
-                            arrayImageDish[3].setImageResource((R.drawable.icecreamwithposypkavanille));
-                        else if (dishes[3].equals(new Icecream(2, true, true, true, true, true)))
-                            arrayImageDish[3].setImageResource((R.drawable.icecreamwithposypkachocolate));
-                        else if (dishes[3].equals(new Icecream(3, true, true, true, true, true)))
-                            arrayImageDish[3].setImageResource((R.drawable.icecreamwithposypkastrawberry));
-                        else if (dishes[3].equals(new Dough(0, false)))
-                            arrayImageDish[3].setImageResource((R.drawable.dough));
-                        else if (dishes[3].equals(new Dough(1, true)))
-                            arrayImageDish[3].setImageResource((R.drawable.doughvanille));
-                        else if (dishes[3].equals(new Dough(2, true)))
-                            arrayImageDish[3].setImageResource((R.drawable.doughchocolate));
-                        else if (dishes[3].equals(new Dough(3, true)))
-                            arrayImageDish[3].setImageResource((R.drawable.doughstrawberry));
-                        else
-                            arrayImageDish[3].setImageResource((R.drawable.dish));
-                    } else {
-                        if (dishes[3].equals(new Donut(0, true, false, false)))
-                            arrayImageDish[3].setImageResource(R.drawable.donutwithposypkastrawberryon); // ИСПРАВИТЬ ИСПРАВИТЬ ИСПРАВИТЬ ИСПРАВТЬ
-                        else if (dishes[3].equals(new Donut(1, true, true, false)))
-                            arrayImageDish[3].setImageResource(R.drawable.donutwithoutposypkavanilleon);
-                        else if (dishes[3].equals(new Donut(2, true, true, false)))
-                            arrayImageDish[3].setImageResource(R.drawable.donutwithoutposypkachocolateon);
-                        else if (dishes[3].equals(new Donut(3, true, true, false)))
-                            arrayImageDish[3].setImageResource(R.drawable.donutwithoutposypkastrawberryon);
-                        else if (dishes[3].equals(new Donut(1, true, true, true)))
-                            arrayImageDish[3].setImageResource(R.drawable.donutwithposypkavanilleon);
-                        else if (dishes[3].equals(new Donut(2, true, true, false)))
-                            arrayImageDish[3].setImageResource(R.drawable.donutwithposypkachocolateon);
-                        else if (dishes[3].equals(new Donut(3, true, true, false)))
-                            arrayImageDish[3].setImageResource(R.drawable.donutwithposypkastrawberryon);
-                        else if (dishes[3].equals(new Cake(1, true, true, false, false)))
-                            arrayImageDish[3].setImageResource(R.drawable.cakewithoutfruitchocolateon); //ИСПРАВИТЬ ИСПРАВИТЬ ИСПРАВИТЬ ИСПРАВИТЬ
-                        else if (dishes[3].equals(new Cake(2, true, true, false, false)))
-                            arrayImageDish[3].setImageResource(R.drawable.cakewithoutfruitchocolateon); //ИСПРАВИТЬ ИСПРАВИТЬ ИСПРАВИТЬ ИСПРАВИТЬ
-                        else if (dishes[3].equals(new Cake(3, true, true, false, false)))
-                            arrayImageDish[3].setImageResource(R.drawable.cakewithoutfruitchocolateon); //ИСПРАВИТЬ ИСПРАВИТЬ ИСПРАВИТЬ ИСПРАВИТЬ
-                        else if (dishes[3].equals(new Cake(1, true, true, true, false)))
-                            arrayImageDish[3].setImageResource(R.drawable.cakewithoutfruitvanilleon);
-                        else if (dishes[3].equals(new Cake(2, true, true, true, false)))
-                            arrayImageDish[3].setImageResource(R.drawable.cakewithoutfruitchocolateon);
-                        else if (dishes[3].equals(new Cake(3, true, true, true, false)))
-                            arrayImageDish[3].setImageResource(R.drawable.cakewithoutfruitstrawberryon);
-                        else if (dishes[3].equals(new Cake(1, true, true, true, true)))
-                            arrayImageDish[3].setImageResource(R.drawable.cakewithfruitvanilleon);
-                        else if (dishes[3].equals(new Cake(2, true, true, true, true)))
-                            arrayImageDish[3].setImageResource(R.drawable.cakewithfruitchocolateon);
-                        else if (dishes[3].equals(new Cake(3, true, true, true, true)))
-                            arrayImageDish[3].setImageResource(R.drawable.cakewithfruitstrawberryon);
-                        else if (dishes[3].equals(new Croissant(1, true, true)))
-                            arrayImageDish[3].setImageResource(R.drawable.croissantvanilleon);
-                        else if (dishes[3].equals(new Croissant(2, true, true)))
-                            arrayImageDish[3].setImageResource(R.drawable.croissantchocolateon);
-                        else if (dishes[3].equals(new Croissant(3, true, true)))
-                            arrayImageDish[3].setImageResource(R.drawable.croissantstrawberryon);
-                        else if (dishes[3].equals(new Icecream(0, false, true, false, false, false)))
-                            arrayImageDish[3].setImageResource(R.drawable.hornoficecreamon);
-                        else if (dishes[3].equals(new Icecream(0, false, true, true, false, false)))
-                            arrayImageDish[3].setImageResource((R.drawable.hornoficecreamonstandarton));
-                        else if (dishes[3].equals(new Icecream(1, true, true, true, false, false)))
-                            arrayImageDish[3].setImageResource((R.drawable.hornoficecreamonvanilleon));
-                        else if (dishes[3].equals(new Icecream(2, true, true, true, false, false)))
-                            arrayImageDish[3].setImageResource((R.drawable.hornoficecreamonchocolateon));
-                        else if (dishes[3].equals(new Icecream(3, true, true, true, false, false)))
-                            arrayImageDish[3].setImageResource((R.drawable.hornoficecreamonstrawberryon));
-                        else if (dishes[3].equals(new Icecream(1, true, true, true, true, false)))
-                            arrayImageDish[3].setImageResource((R.drawable.icecreamwithoutposypkavanilleon));
-                        else if (dishes[3].equals(new Icecream(2, true, true, true, true, false)))
-                            arrayImageDish[3].setImageResource((R.drawable.icecreamwithoutposypkachocolateon));
-                        else if (dishes[3].equals(new Icecream(3, true, true, true, true, false)))
-                            arrayImageDish[3].setImageResource((R.drawable.icecreamwithoutposypkastrawberryon));
-                        else if (dishes[3].equals(new Icecream(1, true, true, true, true, true)))
-                            arrayImageDish[3].setImageResource((R.drawable.icecreamwithposypkavanilleon));
-                        else if (dishes[3].equals(new Icecream(2, true, true, true, true, true)))
-                            arrayImageDish[3].setImageResource((R.drawable.icecreamwithposypkachocolateon));
-                        else if (dishes[3].equals(new Icecream(3, true, true, true, true, true)))
-                            arrayImageDish[3].setImageResource((R.drawable.icecreamwithposypkastrawberryon));
-                        else if (dishes[3].equals(new Dough(0, false)))
-                            arrayImageDish[3].setImageResource((R.drawable.doughon));
-                        else if (dishes[3].equals(new Dough(1, true)))
-                            arrayImageDish[3].setImageResource((R.drawable.doughvanilleon));
-                        else if (dishes[3].equals(new Dough(2, true)))
-                            arrayImageDish[3].setImageResource((R.drawable.doughchocolateon));
-                        else if (dishes[3].equals(new Dough(3, true)))
-                            arrayImageDish[3].setImageResource((R.drawable.doughstrawberryon));
-                        else
-                            arrayImageDish[3].setImageResource(R.drawable.dishon);
-                    }
-                    boolean change = false;
+                    dishes[3].setImage(arrayImageDish[3],arrayFlags[3]);
+                    change = false;
                     if (arrayFlags[3]) {
                         arrayFlags[3] = !arrayFlags[3];
                         change = true;
@@ -752,25 +177,13 @@ public class MainActivity extends AppCompatActivity {
         dough.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(arrayFlags[0] && dishes[0].equals(new Dish())){
-                    arrayFlags[0] = false;
-                    dishes[0] = new Dough(0,false);
-                    arrayImageDish[0].setImageResource(R.drawable.dough);
-                }
-                else if(arrayFlags[1] && dishes[1].equals(new Dish())){
-                    dishes[1] = new Dough(0,false);
-                    arrayFlags[1] = false;
-                    arrayImageDish[1].setImageResource(R.drawable.dough);
-                }
-                else if(arrayFlags[2] && dishes[2].equals(new Dish())){
-                    dishes[2] = new Dough(0,false);
-                    arrayFlags[2] = false;
-                    arrayImageDish[2].setImageResource(R.drawable.dough);
-                }
-                else if(arrayFlags[3] && dishes[3].equals(new Dish())){
-                    dishes[3] = new Dough(0,false);
-                    arrayFlags[3] = false;
-                    arrayImageDish[3].setImageResource(R.drawable.dough);
+                for(int i = 0; i < countDishes;i++){
+                    if(arrayFlags[i] && dishes[i] instanceof Nothing){
+                        arrayFlags[i] = false;
+                        dishes[i] = new Dough(0,false);
+                        arrayImageDish[i].setImageResource(R.drawable.dough);
+                        break;
+                    }
                 }
             }
         });
@@ -780,25 +193,14 @@ public class MainActivity extends AppCompatActivity {
         ice.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(arrayFlags[0] && dishes[0].equals(new Icecream(0,false,true,false,false,false))){
-                    arrayFlags[0] = false;
-                    dishes[0] = new Icecream(0, false, true, true, false, false);
-                    arrayImageDish[0].setImageResource(R.drawable.hornoficecreamonstandart);
-                }
-                else if(arrayFlags[1] && dishes[1].equals(new Icecream(0,false,true,false,false,false))){
-                    arrayFlags[1] = false;
-                    dishes[1] = new Icecream(0,false,true,true,false,false);
-                    arrayImageDish[1].setImageResource(R.drawable.hornoficecreamonstandart);
-                }
-                else if(arrayFlags[2] && dishes[2].equals(new Icecream(0,false,true,false,false,false))){
-                    arrayFlags[2] = false;
-                    dishes[2] = new Icecream(0,false,true,true,false,false);
-                    arrayImageDish[2].setImageResource(R.drawable.hornoficecreamonstandart);
-                }
-                else if(arrayFlags[3] && dishes[3].equals(new Icecream(0,false,true,false,false,false))){
-                    arrayFlags[3] = false;
-                    dishes[3] = new Icecream(0,false,true,true,false,false);
-                    arrayImageDish[3].setImageResource(R.drawable.hornoficecreamonstandart);
+                for(int i = 0; i < countDishes;i++){
+                    if(arrayFlags[i] && dishes[i] instanceof Icecream){
+                        if(!((Icecream)dishes[i]).isIce){
+                            ((Icecream)dishes[i]).setIce(true,arrayImageDish[i]);
+                            arrayFlags[i] = false;
+                            break;
+                        }
+                    }
                 }
             }
         });
@@ -808,25 +210,12 @@ public class MainActivity extends AppCompatActivity {
         hornIcecream.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(arrayFlags[0] && dishes[0].equals(new Dish())){
-                    arrayFlags[0] = false;
-                    dishes[0] = new Icecream(0,false,true,false,false,false);
-                    arrayImageDish[0].setImageResource(R.drawable.hornoficecream);
-                }
-                else if(arrayFlags[1] && dishes[1].equals(new Dish())){
-                    dishes[1] = new Icecream(0,false,true,false,false,false);
-                    arrayFlags[1] = false;
-                    arrayImageDish[1].setImageResource(R.drawable.hornoficecream);
-                }
-                else if(arrayFlags[2] && dishes[2].equals(new Dish())){
-                    dishes[2] = new Icecream(0,false,true,false,false,false);
-                    arrayFlags[2] = false;
-                    arrayImageDish[2].setImageResource(R.drawable.hornoficecream);
-                }
-                else if(arrayFlags[3] && dishes[3].equals(new Dish())){
-                    dishes[3] = new Icecream(0,false,true,false,false,false);
-                    arrayFlags[3] = false;
-                    arrayImageDish[3].setImageResource(R.drawable.hornoficecream);
+                for(int i = 0; i < countDishes; i++){
+                    if(arrayFlags[i] && dishes[i] instanceof Nothing){
+                        arrayFlags[i] = false;
+                        dishes[i] = new Icecream(0,false,false,false,false);
+                        arrayImageDish[i].setImageResource(R.drawable.hornoficecream);
+                    }
                 }
             }
         });
@@ -836,67 +225,22 @@ public class MainActivity extends AppCompatActivity {
         hornCake.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(arrayFlags[0] && dishes[0].equals(new Dough(1,true))){
-                    arrayFlags[0] = false;
-                    dishes[0] = new Cake(1,true,true,false,false);
-                    arrayImageDish[0].setImageResource(R.drawable.cakewithfruitstrawberry); //ИСПРАВИТЬ НА ПИРОЖЕНОЕ В РОЖКЕ
+                for(int i = 0; i < countDishes; i++){
+                    if(arrayFlags[i] && dishes[i] instanceof Dough){
+                        if(dishes[i].isColour){
+                            arrayFlags[i] = false;
+                            dishes[i] = new Cake(((Dough)dishes[i]).colour,true,false,false);
+                            switch (((Cake)dishes[i]).colour){
+                                case 1:
+                                    arrayImageDish[i].setImageResource(R.drawable.cakewithfruitvanille); //Исправить на пироженое в рожке
+                                case 2:
+                                    arrayImageDish[i].setImageResource(R.drawable.cakewithfruitchocolate); //Исправить на пироженое в рожке
+                                case 3:
+                                    arrayImageDish[i].setImageResource(R.drawable.cakewithfruitstrawberry); //Исправить на пироженое в рожке
+                            }
+                        }
+                    }
                 }
-                else if(arrayFlags[1] && dishes[0].equals(new Dough(1,true))){
-                    arrayFlags[1] = false;
-                    dishes[1] = new Cake(1,true,true,false,false);
-                    arrayImageDish[1].setImageResource(R.drawable.cakewithfruitstrawberry); //ИСПРАВИТЬ НА ПИРОЖЕНОЕ В РОЖКЕ
-                }
-                else if(arrayFlags[2] && dishes[0].equals(new Dough(1,true))){
-                    arrayFlags[2] = false;
-                    dishes[2] = new Cake(1,true,true,false,false);
-                    arrayImageDish[2].setImageResource(R.drawable.cakewithfruitstrawberry); //ИСПРАВИТЬ НА ПИРОЖЕНОЕ В РОЖКЕ
-                }
-                else if(arrayFlags[3] && dishes[0].equals(new Dough(1,true))){
-                    arrayFlags[3] = false;
-                    dishes[3] = new Cake(1,true,true,false,false);
-                    arrayImageDish[3].setImageResource(R.drawable.cakewithfruitstrawberry); //ИСПРАВИТЬ НА ПИРОЖЕНОЕ В РОЖКЕ
-                }
-                else if(arrayFlags[0] && dishes[0].equals(new Dough(2,true))){
-                    arrayFlags[0] = false;
-                    dishes[0] = new Cake(2,true,true,false,false);
-                    arrayImageDish[0].setImageResource(R.drawable.cakewithfruitstrawberry); //ИСПРАВИТЬ НА ПИРОЖЕНОЕ В РОЖКЕ
-                }
-                else if(arrayFlags[1] && dishes[0].equals(new Dough(2,true))){
-                    arrayFlags[1] = false;
-                    dishes[1] = new Cake(2,true,true,false,false);
-                    arrayImageDish[1].setImageResource(R.drawable.cakewithfruitstrawberry); //ИСПРАВИТЬ НА ПИРОЖЕНОЕ В РОЖКЕ
-                }
-                else if(arrayFlags[2] && dishes[0].equals(new Dough(2,true))){
-                    arrayFlags[2] = false;
-                    dishes[2] = new Cake(2,true,true,false,false);
-                    arrayImageDish[2].setImageResource(R.drawable.cakewithfruitstrawberry); //ИСПРАВИТЬ НА ПИРОЖЕНОЕ В РОЖКЕ
-                }
-                else if(arrayFlags[3] && dishes[0].equals(new Dough(2,true))){
-                    arrayFlags[3] = false;
-                    dishes[3] = new Cake(2,true,true,false,false);
-                    arrayImageDish[3].setImageResource(R.drawable.cakewithfruitstrawberry); //ИСПРАВИТЬ НА ПИРОЖЕНОЕ В РОЖКЕ
-                }
-                else if(arrayFlags[0] && dishes[0].equals(new Dough(3,true))){
-                    arrayFlags[0] = false;
-                    dishes[0] = new Cake(3,true,true,false,false);
-                    arrayImageDish[0].setImageResource(R.drawable.cakewithfruitstrawberry); //ИСПРАВИТЬ НА ПИРОЖЕНОЕ В РОЖКЕ
-                }
-                else if(arrayFlags[1] && dishes[0].equals(new Dough(3,true))){
-                    arrayFlags[1] = false;
-                    dishes[1] = new Cake(3,true,true,false,false);
-                    arrayImageDish[1].setImageResource(R.drawable.cakewithfruitstrawberry); //ИСПРАВИТЬ НА ПИРОЖЕНОЕ В РОЖКЕ
-                }
-                else if(arrayFlags[2] && dishes[0].equals(new Dough(3,true))){
-                    arrayFlags[2] = false;
-                    dishes[2] = new Cake(3,true,true,false,false);
-                    arrayImageDish[2].setImageResource(R.drawable.cakewithfruitstrawberry); //ИСПРАВИТЬ НА ПИРОЖЕНОЕ В РОЖКЕ
-                }
-                else if(arrayFlags[3] && dishes[0].equals(new Dough(3,true))){
-                    arrayFlags[3] = false;
-                    dishes[3] = new Cake(3,true,true,false,false);
-                    arrayImageDish[3].setImageResource(R.drawable.cakewithfruitstrawberry); //ИСПРАВИТЬ НА ПИРОЖЕНОЕ В РОЖКЕ
-                }
-
             }
         });
 
@@ -905,45 +249,25 @@ public class MainActivity extends AppCompatActivity {
         creamVanille.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(arrayFlags[0] && dishes[0].equals(new Icecream(0,false,true,true,false,false))){
-                    arrayFlags[0] = false;
-                    dishes[0] = new Icecream(1,true,true,true,false,false);
-                    arrayImageDish[0].setImageResource(R.drawable.hornoficecreamonvanille);
-                }
-                else if(arrayFlags[1] && dishes[1].equals(new Icecream(0,false,true,true,false,false))){
-                    arrayFlags[1] = false;
-                    dishes[1] = new Icecream(1,true,true,true,false,false);
-                    arrayImageDish[1].setImageResource(R.drawable.hornoficecreamonvanille);
-                }
-                else if(arrayFlags[2] && dishes[2].equals(new Icecream(0,false,true,true,false,false))){
-                    arrayFlags[2] = false;
-                    dishes[2] = new Icecream(1,true,true,true,false,false);
-                    arrayImageDish[2].setImageResource(R.drawable.hornoficecreamonvanille);
-                }
-                else if(arrayFlags[3] && dishes[3].equals(new Icecream(0,false,true,true,false,false))){
-                    arrayFlags[3] = false;
-                    dishes[3] = new Icecream(1,true,true,true,false,false);
-                    arrayImageDish[3].setImageResource(R.drawable.hornoficecreamonvanille);
-                }
-                else if(arrayFlags[0] && dishes[0].equals(new Dough(0,false))){
-                    arrayFlags[0] = false;
-                    dishes[0] = new Dough(1,true);
-                    arrayImageDish[0].setImageResource(R.drawable.doughvanille);
-                }
-                else if(arrayFlags[1] && dishes[1].equals(new Dough(0,false))){
-                    arrayFlags[1] = false;
-                    dishes[1] = new Dough(1,true);
-                    arrayImageDish[1].setImageResource(R.drawable.doughvanille);
-                }
-                else if(arrayFlags[2] && dishes[2].equals(new Dough(0,false))){
-                    arrayFlags[2] = false;
-                    dishes[2] = new Dough(1,true);
-                    arrayImageDish[2].setImageResource(R.drawable.doughvanille);
-                }
-                else if(arrayFlags[3] && dishes[3].equals(new Dough(0,false))){
-                    arrayFlags[3] = false;
-                    dishes[3] = new Dough(1,true);
-                    arrayImageDish[3].setImageResource(R.drawable.doughvanille);
+                for(int i = 0; i < countDishes; i++){
+                    if(arrayFlags[i]){
+                        if(dishes[i] instanceof Icecream){
+                            if(((Icecream)dishes[i]).isIce && !((Icecream)dishes[i]).isColour){
+                                ((Icecream)dishes[i]).paint(1,arrayImageDish[i]);
+                                arrayFlags[i] = false;
+                            }
+                        } else if(dishes[i] instanceof Dough){
+                            if(!((Dough)dishes[i]).isColour){
+                                ((Dough)dishes[i]).paint(1,arrayImageDish[i]);
+                                arrayFlags[i] = false;
+                            }
+                        } else if(dishes[i] instanceof Donut){
+                            if(!((Donut)dishes[i]).isColour){
+                                ((Donut)dishes[i]).paint(1,arrayImageDish[i]);
+                                arrayFlags[i] = false;
+                            }
+                        }
+                    }
                 }
             }
         });
@@ -953,45 +277,25 @@ public class MainActivity extends AppCompatActivity {
         creamChocolate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(arrayFlags[0] && dishes[0].equals(new Icecream(0,false,true,true,false,false))){
-                    arrayFlags[0] = false;
-                    dishes[0] = new Icecream(2,true,true,true,false,false);
-                    arrayImageDish[0].setImageResource(R.drawable.hornoficecreamonchocolate);
-                }
-                else if(arrayFlags[1] && dishes[1].equals(new Icecream(0,false,true,true,false,false))){
-                    arrayFlags[1] = false;
-                    dishes[1] = new Icecream(2,true,true,true,false,false);
-                    arrayImageDish[1].setImageResource(R.drawable.hornoficecreamonchocolate);
-                }
-                else if(arrayFlags[2] && dishes[2].equals(new Icecream(0,false,true,true,false,false))){
-                    arrayFlags[2] = false;
-                    dishes[2] = new Icecream(2,true,true,true,false,false);
-                    arrayImageDish[2].setImageResource(R.drawable.hornoficecreamonchocolate);
-                }
-                else if(arrayFlags[3] && dishes[3].equals(new Icecream(0,false,true,true,false,false))){
-                    arrayFlags[3] = false;
-                    dishes[3] = new Icecream(2,true,true,true,false,false);
-                    arrayImageDish[3].setImageResource(R.drawable.hornoficecreamonchocolate);
-                }
-                else if(arrayFlags[0] && dishes[0].equals(new Dough(0,false))){
-                    arrayFlags[0] = false;
-                    dishes[0] = new Dough(2,true);
-                    arrayImageDish[0].setImageResource(R.drawable.doughchocolate);
-                }
-                else if(arrayFlags[1] && dishes[1].equals(new Dough(0,false))){
-                    arrayFlags[1] = false;
-                    dishes[1] = new Dough(2,true);
-                    arrayImageDish[1].setImageResource(R.drawable.doughchocolate);
-                }
-                else if(arrayFlags[2] && dishes[2].equals(new Dough(0,false))){
-                    arrayFlags[2] = false;
-                    dishes[2] = new Dough(2,true);
-                    arrayImageDish[2].setImageResource(R.drawable.doughchocolate);
-                }
-                else if(arrayFlags[3] && dishes[3].equals(new Dough(0,false))){
-                    arrayFlags[3] = false;
-                    dishes[3] = new Dough(2,true);
-                    arrayImageDish[3].setImageResource(R.drawable.doughchocolate);
+                for(int i = 0; i < countDishes; i++){
+                    if(arrayFlags[i]){
+                        if(dishes[i] instanceof Icecream){
+                            if(((Icecream)dishes[i]).isIce && !((Icecream)dishes[i]).isColour){
+                                ((Icecream)dishes[i]).paint(2,arrayImageDish[i]);
+                                arrayFlags[i] = false;
+                            }
+                        } else if(dishes[i] instanceof Dough){
+                            if(!((Dough)dishes[i]).isColour){
+                                ((Dough)dishes[i]).paint(2,arrayImageDish[i]);
+                                arrayFlags[i] = false;
+                            }
+                        } else if(dishes[i] instanceof Donut){
+                            if(!((Donut)dishes[i]).isColour){
+                                ((Donut)dishes[i]).paint(2,arrayImageDish[i]);
+                                arrayFlags[i] = false;
+                            }
+                        }
+                    }
                 }
             }
         });
@@ -1001,45 +305,25 @@ public class MainActivity extends AppCompatActivity {
         creamStrawberry.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(arrayFlags[0] && dishes[0].equals(new Icecream(0,false,true,true,false,false))){
-                    arrayFlags[0] = false;
-                    dishes[0] = new Icecream(3,true,true,true,false,false);
-                    arrayImageDish[0].setImageResource(R.drawable.hornoficecreamonstrawberry);
-                }
-                else if(arrayFlags[1] && dishes[1].equals(new Icecream(0,false,true,true,false,false))){
-                    arrayFlags[1] = false;
-                    dishes[1] = new Icecream(3,true,true,true,false,false);
-                    arrayImageDish[1].setImageResource(R.drawable.hornoficecreamonstrawberry);
-                }
-                else if(arrayFlags[2] && dishes[2].equals(new Icecream(0,false,true,true,false,false))){
-                    arrayFlags[2] = false;
-                    dishes[2] = new Icecream(3,true,true,true,false,false);
-                    arrayImageDish[2].setImageResource(R.drawable.hornoficecreamonstrawberry);
-                }
-                else if(arrayFlags[3] && dishes[3].equals(new Icecream(0,false,true,true,false,false))){
-                    arrayFlags[3] = false;
-                    dishes[3] = new Icecream(3,true,true,true,false,false);
-                    arrayImageDish[3].setImageResource(R.drawable.hornoficecreamonstrawberry);
-                }
-                else if(arrayFlags[0] && dishes[0].equals(new Dough(0,false))){
-                    arrayFlags[0] = false;
-                    dishes[0] = new Dough(3,true);
-                    arrayImageDish[0].setImageResource(R.drawable.doughstrawberry);
-                }
-                else if(arrayFlags[1] && dishes[1].equals(new Dough(0,false))){
-                    arrayFlags[1] = false;
-                    dishes[1] = new Dough(3,true);
-                    arrayImageDish[1].setImageResource(R.drawable.doughstrawberry);
-                }
-                else if(arrayFlags[2] && dishes[2].equals(new Dough(0,false))){
-                    arrayFlags[2] = false;
-                    dishes[2] = new Dough(3,true);
-                    arrayImageDish[2].setImageResource(R.drawable.doughstrawberry);
-                }
-                else if(arrayFlags[3] && dishes[3].equals(new Dough(0,false))){
-                    arrayFlags[3] = false;
-                    dishes[3] = new Dough(3,true);
-                    arrayImageDish[3].setImageResource(R.drawable.doughstrawberry);
+                for(int i = 0; i < countDishes; i++){
+                    if(arrayFlags[i]){
+                        if(dishes[i] instanceof Icecream){
+                            if(((Icecream)dishes[i]).isIce && !((Icecream)dishes[i]).isColour){
+                                ((Icecream)dishes[i]).paint(3,arrayImageDish[i]);
+                                arrayFlags[i] = false;
+                            }
+                        } else if(dishes[i] instanceof Dough){
+                            if(!((Dough)dishes[i]).isColour){
+                                ((Dough)dishes[i]).paint(3,arrayImageDish[i]);
+                                arrayFlags[i] = false;
+                            }
+                        } else if(dishes[i] instanceof Donut){
+                            if(!((Donut)dishes[i]).isColour){
+                                ((Donut)dishes[i]).paint(3,arrayImageDish[i]);
+                                arrayFlags[i] = false;
+                            }
+                        }
+                    }
                 }
             }
         });
@@ -1049,92 +333,18 @@ public class MainActivity extends AppCompatActivity {
         automatIcecream.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(arrayFlags[0] && dishes[0].equals(new Icecream(1,true,true,true,false,false))){
-                    arrayFlags[0] = false;
-                    arrayFlagsIsEmpty[0] = true;
-                    dishes[0] = new Icecream(1,true,true,true,true,true);
-                    arrayImageDish[0].setImageResource(R.drawable.nothing);
-                    isWorkingAutomatIcecream = true;
-                    numberTakeDishForAutomatIcecream = 0;
-                } else if(arrayFlags[1] && dishes[1].equals(new Icecream(1,true,true,true,false,false))){
-                    arrayFlags[1] = false;
-                    arrayFlagsIsEmpty[1] = true;
-                    dishes[1] = new Icecream(1,true,true,true,true,true);
-                    arrayImageDish[1].setImageResource(R.drawable.nothing);
-                    isWorkingAutomatIcecream = true;
-                    numberTakeDishForAutomatIcecream = 1;
-                } else if(arrayFlags[2] && dishes[2].equals(new Icecream(1,true,true,true,false,false))){
-                    arrayFlags[2] = false;
-                    arrayFlagsIsEmpty[2] = true;
-                    dishes[2] = new Icecream(1,true,true,true,true,true);
-                    arrayImageDish[2].setImageResource(R.drawable.nothing);
-                    isWorkingAutomatIcecream = true;
-                    numberTakeDishForAutomatIcecream = 2;
-                } else if(arrayFlags[3] && dishes[3].equals(new Icecream(1,true,true,true,false,false))){
-                    arrayFlags[3] = false;
-                    arrayFlagsIsEmpty[3] = true;
-                    dishes[3] = new Icecream(1,true,true,true,true,true);
-                    arrayImageDish[3].setImageResource(R.drawable.nothing);
-                    isWorkingAutomatIcecream = true;
-                    numberTakeDishForAutomatIcecream = 3;
-                } else if(arrayFlags[0] && dishes[0].equals(new Icecream(2,true,true,true,false,false))){
-                    arrayFlags[0] = false;
-                    arrayFlagsIsEmpty[0] = true;
-                    dishes[0] = new Icecream(2,true,true,true,true,true);
-                    arrayImageDish[0].setImageResource(R.drawable.nothing);
-                    isWorkingAutomatIcecream = true;
-                    numberTakeDishForAutomatIcecream = 0;
-                } else if(arrayFlags[1] && dishes[1].equals(new Icecream(2,true,true,true,false,false))){
-                    arrayFlags[1] = false;
-                    arrayFlagsIsEmpty[1] = true;
-                    dishes[1] = new Icecream(2,true,true,true,true,true);
-                    arrayImageDish[1].setImageResource(R.drawable.nothing);
-                    isWorkingAutomatIcecream = true;
-                    numberTakeDishForAutomatIcecream = 1;
-                } else if(arrayFlags[2] && dishes[2].equals(new Icecream(2,true,true,true,false,false))){
-                    arrayFlags[2] = false;
-                    arrayFlagsIsEmpty[2] = true;
-                    dishes[2] = new Icecream(2,true,true,true,true,true);
-                    arrayImageDish[2].setImageResource(R.drawable.nothing);
-                    isWorkingAutomatIcecream = true;
-                    numberTakeDishForAutomatIcecream = 2;
-                } else if(arrayFlags[3] && dishes[3].equals(new Icecream(2,true,true,true,false,false))){
-                    arrayFlags[3] = false;
-                    arrayFlagsIsEmpty[3] = true;
-                    dishes[3] = new Icecream(2,true,true,true,true,true);
-                    arrayImageDish[3].setImageResource(R.drawable.nothing);
-                    isWorkingAutomatIcecream = true;
-                    numberTakeDishForAutomatIcecream = 3;
-                } else if(arrayFlags[0] && dishes[0].equals(new Icecream(3,true,true,true,false,false))){
-                    arrayFlags[0] = false;
-                    arrayFlagsIsEmpty[0] = true;
-                    dishes[0] = new Icecream(3,true,true,true,true,true);
-                    arrayImageDish[0].setImageResource(R.drawable.nothing);
-                    isWorkingAutomatIcecream = true;
-                    numberTakeDishForAutomatIcecream = 0;
-                } else if(arrayFlags[1] && dishes[1].equals(new Icecream(3,true,true,true,false,false))){
-                    arrayFlags[1] = false;
-                    arrayFlagsIsEmpty[1] = true;
-                    dishes[1] = new Icecream(3,true,true,true,true,true);
-                    arrayImageDish[1].setImageResource(R.drawable.nothing);
-                    isWorkingAutomatIcecream = true;
-                    numberTakeDishForAutomatIcecream = 1;
-                } else if(arrayFlags[2] && dishes[2].equals(new Icecream(3,true,true,true,false,false))){
-                    arrayFlags[2] = false;
-                    arrayFlagsIsEmpty[2] = true;
-                    dishes[2] = new Icecream(3,true,true,true,true,true);
-                    arrayImageDish[2].setImageResource(R.drawable.nothing);
-                    isWorkingAutomatIcecream = true;
-                    numberTakeDishForAutomatIcecream = 2;
-                } else if(arrayFlags[3] && dishes[3].equals(new Icecream(3,true,true,true,false,false))){
-                    arrayFlags[3] = false;
-                    arrayFlagsIsEmpty[3] = true;
-                    dishes[3] = new Icecream(3,true,true,true,true,true);
-                    arrayImageDish[3].setImageResource(R.drawable.nothing);
-                    isWorkingAutomatIcecream = true;
-                    numberTakeDishForAutomatIcecream = 3;
+                for(int i = 0; i < countDishes; i++){
+                    if(arrayFlags[i] && dishes[i] instanceof Icecream){
+                        if(((Icecream)dishes[i]).isColour && !((Icecream)dishes[i]).isAutomat){
+                            arrayFlags[i] = false;
+                            numberTakeDishForAutomatIcecream = i;
+                            isWorkingAutomatIcecream = true;
+                            arrayFlagsIsEmpty[i] = true;
+                            ((Icecream)dishes[i]).setAutomat(true,arrayImageDish[i]);
+                        }
+                    }
                 }
-                if(isWorkingAutomatIcecream){
+                /*if(isWorkingAutomatIcecream){
                     final Timer timer = new Timer();
                     long delay = 1;
                     long period = 3001;
@@ -1167,7 +377,7 @@ public class MainActivity extends AppCompatActivity {
                         }
                     },delay,period);
 
-                }
+                }*/
             }
         });
     }
@@ -1177,5 +387,4 @@ public class MainActivity extends AppCompatActivity {
             array[i] = temp;
         }
     }
-
 }//2340 1080
