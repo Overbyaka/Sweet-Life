@@ -30,8 +30,12 @@ public class MainActivity extends AppCompatActivity {
     private boolean[] change = new boolean[countDishes];
     private int numberTakeDishForAutomatIcecream, numberTakeDishForFurnace, numberTakeDishForPlate;
     private boolean isWorkingAutomatIcecream = false, isWorkingFurnace = false, isWorkingPlate = false;
+    private boolean[] isQuest = new boolean[countGuests];
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState){
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Window w= getWindow();
@@ -48,6 +52,7 @@ public class MainActivity extends AppCompatActivity {
 
         fillArray(arrayFlags,false);//Заполняем массив
         fillArray(arrayFlagsIsEmpty,false);//Заполняем массив
+        fillArray(isQuest,false);
 
         TextView textScore = (TextView)findViewById(R.id.textScore);
         final ImageButton automatIcecream = (ImageButton)findViewById(R.id.imageAutomatIcecream);
@@ -82,6 +87,9 @@ public class MainActivity extends AppCompatActivity {
         for(int i = 0; i < countDishes;i++){
             dishes[i] = new Nothing();
         }
+
+        Handler quests = new Handler();
+
 
         /*Подсветка для первой тарелки*/
 
@@ -240,11 +248,11 @@ public class MainActivity extends AppCompatActivity {
                             dishes[i] = new Cake(((Dough)dishes[i]).colour,true,false,false);
                             switch (((Cake)dishes[i]).colour){
                                 case 1:
-                                    arrayImageDish[i].setImageResource(R.drawable.cakewithfruitvanille); //Исправить на пироженое в рожке
+                                    arrayImageDish[i].setImageResource(R.drawable.cakeinhornvanille);
                                 case 2:
-                                    arrayImageDish[i].setImageResource(R.drawable.cakewithfruitchocolate); //Исправить на пироженое в рожке
+                                    arrayImageDish[i].setImageResource(R.drawable.cakeinhornchocolate);
                                 case 3:
-                                    arrayImageDish[i].setImageResource(R.drawable.cakewithfruitstrawberry); //Исправить на пироженое в рожке
+                                    arrayImageDish[i].setImageResource(R.drawable.cakeinhornstrawberry);
                             }
                             break;
                         }
@@ -359,14 +367,14 @@ public class MainActivity extends AppCompatActivity {
                                 arrayFlagsIsEmpty[i] = true;
                                 isWorkingAutomatIcecream = true;
                                 ((Icecream) dishes[i]).setAutomat(true, arrayImageDish[i]);
-                                automatIcecream.setImageResource(R.drawable.dough); // Поменять на рабочий автомат
+                                automatIcecream.setImageResource(R.drawable.automateicecreamon);
                                 numberTakeDishForAutomatIcecream = i;
                                 Handler handler = new Handler();
                                 handler.postDelayed(new Runnable() {
                                     @Override
                                     public void run() {
                                         arrayFlagsIsEmpty[numberTakeDishForAutomatIcecream] = false;
-                                        automatIcecream.setImageResource(R.drawable.doughstrawberry); //Поменять на нерабочий автомат
+                                        automatIcecream.setImageResource(R.drawable.automaticrecream);
                                         isWorkingAutomatIcecream = false;
                                         switch (((Icecream) dishes[numberTakeDishForAutomatIcecream]).colour) {
                                             case 1:
@@ -403,7 +411,7 @@ public class MainActivity extends AppCompatActivity {
                                     arrayFlagsIsEmpty[i] = true;
                                     isWorkingFurnace = true;
                                     ((Cake) dishes[i]).setFurnace(true, arrayImageDish[i]);
-                                    furnace.setImageResource(R.drawable.dough); // Поменять на рабочую печь
+                                    furnace.setImageResource(R.drawable.furnaceon);
                                     numberTakeDishForFurnace = i;
                                     Handler handler = new Handler();
                                     handler.postDelayed(new Runnable() {
@@ -411,7 +419,7 @@ public class MainActivity extends AppCompatActivity {
                                         public void run() {
                                             arrayFlagsIsEmpty[numberTakeDishForFurnace] = false;
                                             isWorkingFurnace = false;
-                                            furnace.setImageResource(R.drawable.doughstrawberry); //Поменять на нерабочую печь
+                                            furnace.setImageResource(R.drawable.furnace);
                                             switch (((Cake) dishes[numberTakeDishForFurnace]).colour) {
                                                 case 1:
                                                     arrayImageDish[numberTakeDishForFurnace].setImageResource(R.drawable.cakewithoutfruitvanille);
@@ -433,7 +441,7 @@ public class MainActivity extends AppCompatActivity {
                                     arrayFlagsIsEmpty[i] = true;
                                     isWorkingFurnace = true;
                                     dishes[i] = new Croissant(((Dough) dishes[i]).colour, true);
-                                    furnace.setImageResource(R.drawable.dough); // Поменять на рабочий автомат
+                                    furnace.setImageResource(R.drawable.furnaceon);
                                     numberTakeDishForFurnace = i;
                                     arrayImageDish[i].setImageResource(R.drawable.nothing);
                                     Handler handler = new Handler();
@@ -442,7 +450,7 @@ public class MainActivity extends AppCompatActivity {
                                         public void run() {
                                             arrayFlagsIsEmpty[numberTakeDishForFurnace] = false;
                                             isWorkingFurnace = false;
-                                            furnace.setImageResource(R.drawable.doughstrawberry); //Поменять на нерабочий автомат
+                                            furnace.setImageResource(R.drawable.furnace);
                                             switch (((Croissant) dishes[numberTakeDishForFurnace]).colour) {
                                                 case 1:
                                                     arrayImageDish[numberTakeDishForFurnace].setImageResource(R.drawable.croissantvanille);
@@ -478,7 +486,7 @@ public class MainActivity extends AppCompatActivity {
                                 arrayFlagsIsEmpty[i] = true;
                                 isWorkingPlate = true;
                                 dishes[i] = new Donut(0,false,false);
-                                plate.setImageResource(R.drawable.dough); // Поменять на рабочий автомат
+                                plate.setImageResource(R.drawable.plateon);
                                 numberTakeDishForPlate = i;
                                 arrayImageDish[i].setImageResource(R.drawable.nothing);
                                 Handler handler = new Handler();
@@ -486,9 +494,9 @@ public class MainActivity extends AppCompatActivity {
                                     @Override
                                     public void run() {
                                         arrayFlagsIsEmpty[numberTakeDishForPlate] = false;
-                                        plate.setImageResource(R.drawable.doughstrawberry); //Поменять на нерабочий автомат
+                                        plate.setImageResource(R.drawable.plate);
                                         isWorkingPlate = false;
-                                        arrayImageDish[numberTakeDishForPlate].setImageResource(R.drawable.donutwithposypkavanille); //Поменять на пончик без цвета
+                                        arrayImageDish[numberTakeDishForPlate].setImageResource(R.drawable.donutstandart);
                                     }
                                 }, 5000);
                                 break;

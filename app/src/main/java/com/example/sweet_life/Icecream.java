@@ -2,7 +2,7 @@ package com.example.sweet_life;
 
 import android.widget.ImageButton;
 
-public class Icecream extends Dish implements Paint{
+public class Icecream extends Dish implements Paint, Posypka{
     boolean isAutomat;
     boolean isPosypka;
     boolean isIce;

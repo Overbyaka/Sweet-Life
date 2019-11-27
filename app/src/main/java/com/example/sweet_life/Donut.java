@@ -2,7 +2,7 @@ package com.example.sweet_life;
 
 import android.widget.ImageButton;
 
-public class Donut extends Dish implements Paint{
+public class Donut extends Dish implements Paint,Posypka{
     public boolean isPosypka;
 
     public Donut(int colour,boolean isColour,boolean isPosypka){
@@ -50,7 +50,7 @@ public class Donut extends Dish implements Paint{
     public void setImage(ImageButton imageButton, boolean flag){
         if(flag){
             if(!isColour){
-                imageButton.setImageResource(R.drawable.donutwithposypkastrawberry); //Поменять
+                imageButton.setImageResource(R.drawable.donutstandart);
             } else if(!isPosypka){
                 switch (colour){
                     case 1:
@@ -78,7 +78,7 @@ public class Donut extends Dish implements Paint{
             }
         } else{
             if(!isColour){
-                imageButton.setImageResource(R.drawable.donutwithposypkastrawberryon); //Поменять
+                imageButton.setImageResource(R.drawable.donutstandarton);
             } else if(!isPosypka){
                 switch (colour){
                     case 1:

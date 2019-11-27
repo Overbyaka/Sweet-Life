@@ -10,323 +10,53 @@
         android:id="@+id/imageBackGround"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scaleType="fitXY"
-        android:src="@drawable/main"
-        android:background="@null"/>
-
+        android:scaleType="fitEnd"
+        android:src="@drawable/table2"
+        tools:layout_editor_absoluteX="-112dp"
+        tools:layout_editor_absoluteY="16dp" />
     <ImageView
         android:id="@+id/imageView4"
         android:layout_width="99dp"
         android:layout_height="86dp"
-        app:layout_constraintEnd_toStartOf="@+id/imageGuest3"
-        app:layout_constraintTop_toTopOf="parent"
         android:scaleType="fitXY"
-        android:src="@drawable/cakewithfruitchocolate"/>
+        android:src="@drawable/nothing"
+        app:layout_constraintEnd_toStartOf="@+id/imageGuest3"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/imageView3"
         android:layout_width="99dp"
         android:layout_height="86dp"
-        app:layout_constraintEnd_toStartOf="@+id/imageGuest4"
-        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginEnd="14dp"
+        android:layout_marginRight="14dp"
         android:scaleType="fitXY"
-        android:src="@drawable/cakewithfruitchocolate"/>
+        android:src="@drawable/nothing"
+        app:layout_constraintEnd_toStartOf="@+id/imageGuest4"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/imageView2"
         android:layout_width="99dp"
         android:layout_height="86dp"
-        android:layout_marginStart="4dp"
-        android:layout_marginLeft="4dp"
-        app:layout_constraintStart_toEndOf="@+id/imageGuest2"
-        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginEnd="100dp"
+        android:layout_marginRight="100dp"
         android:scaleType="fitXY"
-        android:src="@drawable/cakewithfruitchocolate"/>
-
-    <ImageButton
-        android:id="@+id/imagePosypka"
-        android:layout_width="64dp"
-        android:layout_height="77dp"
-        android:layout_marginStart="3dp"
-        android:layout_marginLeft="3dp"
-        android:layout_marginBottom="80dp"
-        android:background="@null"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/imageDish3"
-        app:layout_constraintStart_toEndOf="@+id/imageHornCake"
-        app:srcCompat="@mipmap/ic_launcher" />
-
-    <ImageButton
-        android:id="@+id/imageDish4"
-        android:layout_width="90dp"
-        android:layout_height="80dp"
-        android:layout_marginEnd="22dp"
-        android:layout_marginRight="22dp"
-        android:scaleType="fitXY"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:src="@drawable/dish"
-        android:background="@null"/>
-
-    <ImageButton
-        android:id="@+id/imageDish3"
-        android:layout_width="90dp"
-        android:layout_height="80dp"
-        android:layout_marginEnd="24dp"
-        android:layout_marginRight="24dp"
-        android:scaleType="fitXY"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/imageDish4"
-        android:src="@drawable/dish"
-        android:background="@null"/>
-
-    <ImageButton
-        android:id="@+id/imageDish1"
-        style="@style/Widget.AppCompat.ImageButton"
-        android:layout_width="90dp"
-        android:layout_height="80dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="24dp"
-        android:layout_marginRight="24dp"
-        android:scaleType="fitXY"
-        android:src="@drawable/dish"
-        app:layout_constraintEnd_toStartOf="@+id/imageDish4"
-        app:layout_constraintTop_toBottomOf="@+id/imageFurnace"
-        android:background="@null"/>
-
-    <ImageButton
-        android:id="@+id/imageHornIcecream"
-        android:layout_width="100dp"
-        android:layout_height="64dp"
-        android:layout_marginStart="21dp"
-        android:layout_marginLeft="21dp"
-        android:layout_marginTop="109dp"
-        android:scaleType="fitXY"
-        app:layout_constraintStart_toEndOf="@+id/imageIce"
-        app:layout_constraintTop_toBottomOf="@+id/imageGuest3"
-        app:srcCompat="@mipmap/ic_launcher_round"
-        android:background="@null"/>
-
-    <ImageButton
-        android:id="@+id/imageHornCake"
-        android:layout_width="100dp"
-        android:layout_height="87dp"
-        android:layout_marginStart="21dp"
-        android:layout_marginLeft="21dp"
-        android:scaleType="fitXY"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/imageDough"
-        app:layout_constraintTop_toBottomOf="@+id/imageHornIcecream"
-        app:srcCompat="@mipmap/ic_launcher_round"
-        android:background="@null"/>
-
-    <ImageButton
-        android:id="@+id/imageCreamVanille"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="12dp"
-        android:layout_marginLeft="12dp"
-        android:layout_marginBottom="12dp"
-        android:scaleType="fitXY"
-        app:layout_constraintBottom_toTopOf="@+id/imageFruitBanana"
-        app:layout_constraintStart_toEndOf="@+id/imageCreamChocolate"
-        android:src="@drawable/donutwithposypkavanille"
-        android:background="@null"/>
-
-    <ImageButton
-        android:id="@+id/imageCreamStrawberry"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="13dp"
-        android:layout_marginLeft="13dp"
-        android:layout_marginBottom="12dp"
-        android:scaleType="fitXY"
-        app:layout_constraintBottom_toTopOf="@+id/imageFruitNut"
-        app:layout_constraintStart_toEndOf="@+id/imageCreamVanille"
-        android:src="@drawable/donutwithposypkastrawberry"
-        android:background="@null"/>
-
-    <ImageButton
-        android:id="@+id/imageFruitStrawberry"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginBottom="29dp"
-        android:scaleType="fitXY"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@mipmap/ic_launcher"
-        android:background="@null"/>
-
-    <ImageButton
-        android:id="@+id/imageFruitBanana"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="12dp"
-        android:layout_marginLeft="12dp"
-        android:layout_marginBottom="29dp"
-        android:scaleType="fitXY"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/imageFruitStrawberry"
-        app:srcCompat="@mipmap/ic_launcher"
-        android:background="@null"/>
-
-    <ImageButton
-        android:id="@+id/imageFruitNut"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="13dp"
-        android:layout_marginLeft="13dp"
-        android:layout_marginBottom="29dp"
-        android:scaleType="fitXY"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/imageFruitBanana"
-        app:srcCompat="@mipmap/ic_launcher"
-        android:background="@null"/>
-
-    <TextView
-        android:id="@+id/textScore"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginTop="16dp"
-        android:text="Score: "
-        android:textSize="25dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:background="@null"/>
-
-    <ImageButton
-        android:id="@+id/imageGuest1"
-        android:layout_width="97dp"
-        android:layout_height="103dp"
-        android:layout_marginStart="15dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginTop="4dp"
-        android:background="@null"
-        android:scaleType="fitXY"
-        android:src="@drawable/icecreamwithposypkavanille"
-        app:layout_constraintEnd_toStartOf="@+id/imageGuest2"
-        app:layout_constraintHorizontal_bias="0.008"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textScore" />
-
-    <ImageButton
-        android:id="@+id/imageGuest2"
-        android:layout_width="97dp"
-        android:layout_height="103dp"
-        android:layout_marginStart="35dp"
-        android:layout_marginLeft="35dp"
-        android:layout_marginTop="51dp"
-        android:background="@null"
-        android:scaleType="fitXY"
-        android:src="@drawable/icecreamwithposypkavanille"
-        app:layout_constraintStart_toEndOf="@+id/imageView"
+        android:src="@drawable/nothing"
+        app:layout_constraintEnd_toStartOf="@+id/imageGuest3"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageButton
-        android:id="@+id/imageGuest3"
-        android:layout_width="97dp"
-        android:layout_height="103dp"
-        android:layout_marginTop="51dp"
-        android:layout_marginEnd="85dp"
-        android:layout_marginRight="85dp"
+        android:id="@+id/imagePosypka"
+        android:layout_width="40dp"
+        android:layout_height="61dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginBottom="7dp"
+        android:background="@null"
         android:scaleType="fitXY"
-        android:src="@drawable/icecreamwithposypkavanille"
-        app:layout_constraintEnd_toStartOf="@+id/imageAutomatIcecream"
-        app:layout_constraintTop_toTopOf="parent"
-        android:background="@null"/>
-
-    <ImageButton
-        android:id="@+id/imageGuest4"
-        android:layout_width="97dp"
-        android:layout_height="103dp"
-        android:layout_marginTop="51dp"
-        android:layout_marginEnd="15dp"
-        android:layout_marginRight="15dp"
-        android:scaleType="fitXY"
-        android:src="@drawable/icecreamwithposypkavanille"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:background="@null"/>
-
-    <ImageButton
-        android:id="@+id/imagePlate"
-        android:layout_width="83dp"
-        android:layout_height="76dp"
-        android:layout_marginStart="239dp"
-        android:layout_marginLeft="239dp"
-        android:layout_marginTop="24dp"
-        android:scaleType="fitXY"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageGuest2"
-        android:src="@drawable/doughstrawberry"
-        android:background="@null"/>
-
-    <ImageButton
-        android:id="@+id/imageFurnace"
-        android:layout_width="122dp"
-        android:layout_height="96dp"
-        android:layout_marginTop="3dp"
-        android:layout_marginEnd="37dp"
-        android:layout_marginRight="37dp"
-        android:scaleType="fitXY"
-        app:layout_constraintEnd_toStartOf="@+id/imageAutomatIcecream"
-        app:layout_constraintTop_toBottomOf="@+id/imageGuest3"
-        android:src="@drawable/doughstrawberry"
-        android:background="@null"/>
-
-    <ImageButton
-        android:id="@+id/imageAutomatIcecream"
-        android:layout_width="126dp"
-        android:layout_height="110dp"
-        android:scaleType="fitXY"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageGuest4"
-        android:src="@drawable/doughstrawberry"
-        android:background="@null"/>
-
-    <ImageButton
-        android:id="@+id/imageCreamChocolate"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginBottom="12dp"
-        android:scaleType="fitXY"
-        app:layout_constraintBottom_toTopOf="@+id/imageFruitStrawberry"
-        app:layout_constraintStart_toStartOf="parent"
-        android:src="@drawable/donutwithposypkachocolate"
-        android:background="@null"/>
-
-    <ImageButton
-        android:id="@+id/imageIce"
-        android:layout_width="100dp"
-        android:layout_height="64dp"
-        android:layout_marginStart="21dp"
-        android:layout_marginLeft="21dp"
-        android:layout_marginTop="9dp"
-        android:scaleType="fitXY"
-        app:layout_constraintBottom_toTopOf="@+id/imageDough"
-        app:layout_constraintStart_toEndOf="@+id/imageCreamStrawberry"
-        app:layout_constraintTop_toBottomOf="@+id/imagePlate"
-        app:srcCompat="@mipmap/ic_launcher_round"
-        android:background="@null"/>
-
-    <ImageButton
-        android:id="@+id/imageDough"
-        android:layout_width="100dp"
-        android:layout_height="87dp"
-        android:layout_marginStart="21dp"
-        android:layout_marginLeft="21dp"
-        android:scaleType="fitXY"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/imageFruitNut"
-        app:layout_constraintTop_toBottomOf="@+id/imageIce"
-        app:srcCompat="@mipmap/ic_launcher_round"
-        android:background="@null"/>
+        android:src="@drawable/posypka"
+        app:layout_constraintBottom_toTopOf="@+id/imageGarbage"
+        app:layout_constraintStart_toEndOf="@+id/imageCreamStrawberry" />
 
     <ImageButton
         android:id="@+id/imageDish2"
@@ -336,30 +66,301 @@
         android:layout_marginEnd="22dp"
         android:layout_marginRight="22dp"
         android:background="@null"
-        android:scaleType="fitXY"
+        android:scaleType="fitCenter"
         android:src="@drawable/dish"
+        app:layout_constraintBottom_toTopOf="@+id/imageDish4"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <ImageButton
+        android:id="@+id/imageDish4"
+        android:layout_width="90dp"
+        android:layout_height="80dp"
+        android:layout_marginEnd="22dp"
+        android:layout_marginRight="22dp"
+        android:layout_marginBottom="11dp"
+        android:background="@null"
+        android:scaleType="fitCenter"
+        android:src="@drawable/dish"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <ImageButton
+        android:id="@+id/imageDish1"
+        style="@style/Widget.AppCompat.ImageButton"
+        android:layout_width="90dp"
+        android:layout_height="80dp"
+        android:layout_marginEnd="23dp"
+        android:layout_marginRight="23dp"
+        android:background="@null"
+        android:scaleType="fitCenter"
+        android:src="@drawable/dish"
+        app:layout_constraintBottom_toTopOf="@+id/imageDish3"
+        app:layout_constraintEnd_toStartOf="@+id/imageDish2" />
+
+    <ImageButton
+        android:id="@+id/imageDish3"
+        android:layout_width="90dp"
+        android:layout_height="80dp"
+        android:layout_marginEnd="23dp"
+        android:layout_marginRight="23dp"
+        android:layout_marginBottom="11dp"
+        android:background="@null"
+        android:scaleType="fitCenter"
+        android:src="@drawable/dish"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/imageDish4" />
+
+    <ImageButton
+        android:id="@+id/imageHornIcecream"
+        android:layout_width="100dp"
+        android:layout_height="64dp"
+        android:layout_marginStart="18dp"
+        android:layout_marginLeft="18dp"
+        android:layout_marginBottom="12dp"
+        android:background="@null"
+        android:scaleType="fitXY"
+        android:src="@drawable/hornforicecream"
+        app:layout_constraintBottom_toTopOf="@+id/imageHornCake"
+        app:layout_constraintStart_toEndOf="@+id/imageDough" />
+
+    <ImageButton
+        android:id="@+id/imageHornCake"
+        android:layout_width="61dp"
+        android:layout_height="42dp"
+        android:layout_marginStart="42dp"
+        android:layout_marginLeft="42dp"
+        android:layout_marginBottom="15dp"
+        android:background="@null"
+        android:scaleType="fitXY"
+        android:src="@drawable/hornforcake"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imageDough" />
+
+    <ImageButton
+        android:id="@+id/imageCreamVanille"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginLeft="12dp"
+        android:layout_marginBottom="13dp"
+        android:background="@null"
+        android:scaleType="fitXY"
+        android:src="@drawable/creamvanille"
+        app:layout_constraintBottom_toTopOf="@+id/imageFruitBanana"
+        app:layout_constraintStart_toEndOf="@+id/imageCreamChocolate" />
+
+    <ImageButton
+        android:id="@+id/imageCreamStrawberry"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="13dp"
+        android:layout_marginLeft="13dp"
+        android:layout_marginBottom="13dp"
+        android:background="@null"
+        android:scaleType="fitXY"
+        android:src="@drawable/creamstrawberry"
+        app:layout_constraintBottom_toTopOf="@+id/imageFruitNut"
+        app:layout_constraintStart_toEndOf="@+id/imageCreamVanille" />
+
+    <ImageButton
+        android:id="@+id/imageFruitStrawberry"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginBottom="18dp"
+        android:background="@null"
+        android:scaleType="fitXY"
+        android:src="@drawable/strawberry"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageButton
+        android:id="@+id/imageFruitBanana"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginLeft="12dp"
+        android:layout_marginBottom="18dp"
+        android:background="@null"
+        android:scaleType="fitXY"
+        android:src="@drawable/banana"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imageFruitStrawberry" />
+
+    <ImageButton
+        android:id="@+id/imageFruitNut"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="13dp"
+        android:layout_marginLeft="13dp"
+        android:layout_marginBottom="18dp"
+        android:background="@null"
+        android:scaleType="fitXY"
+        android:src="@drawable/nut"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imageFruitBanana" />
+
+    <TextView
+        android:id="@+id/textScore"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="16dp"
+        android:background="@null"
+        android:text="Score: "
+        android:textSize="25dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/imageGuest1"
+        android:layout_width="97dp"
+        android:layout_height="80dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="4dp"
+        android:background="@null"
+        android:scaleType="fitXY"
+        android:src="@drawable/nothing"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textScore" />
+
+    <ImageButton
+        android:id="@+id/imageGuest2"
+        android:layout_width="97dp"
+        android:layout_height="80dp"
+        android:layout_marginStart="35dp"
+        android:layout_marginLeft="35dp"
+        android:layout_marginBottom="8dp"
+        android:background="@null"
+        android:scaleType="fitXY"
+        android:src="@drawable/nothing"
+        app:layout_constraintBottom_toTopOf="@+id/imagePlate"
+        app:layout_constraintStart_toEndOf="@+id/imageView" />
+
+    <ImageButton
+        android:id="@+id/imageGuest3"
+        android:layout_width="97dp"
+        android:layout_height="80dp"
+        android:background="@null"
+        android:scaleType="fitXY"
+        android:src="@drawable/nothing"
+        app:layout_constraintBottom_toTopOf="@+id/imageFurnace"
+        app:layout_constraintEnd_toStartOf="@+id/imageView3" />
+
+    <ImageButton
+        android:id="@+id/imageGuest4"
+        android:layout_width="97dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="48dp"
+        android:layout_marginEnd="1dp"
+        android:layout_marginRight="1dp"
+        android:background="@null"
+        android:scaleType="fitXY"
+        android:src="@drawable/nothing"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageAutomatIcecream" />
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/imagePlate"
+        android:layout_width="120dp"
+        android:layout_height="76dp"
+        android:layout_marginEnd="113dp"
+        android:layout_marginRight="113dp"
+        android:layout_marginBottom="27dp"
+        android:background="@null"
+        android:scaleType="fitCenter"
+        android:src="@drawable/plate"
+        app:layout_constraintBottom_toTopOf="@+id/imageIce"
+        app:layout_constraintEnd_toStartOf="@+id/imageFurnace" />
+
+    <ImageButton
+        android:id="@+id/imageFurnace"
+        android:layout_width="122dp"
+        android:layout_height="96dp"
+        android:layout_marginEnd="47dp"
+        android:layout_marginRight="47dp"
+        android:layout_marginBottom="20dp"
+        android:background="@null"
+        android:scaleType="fitXY"
+        android:src="@drawable/furnace"
+        app:layout_constraintBottom_toTopOf="@+id/imageDish1"
+        app:layout_constraintEnd_toStartOf="@+id/imageAutomatIcecream" />
+
+    <ImageButton
+        android:id="@+id/imageAutomatIcecream"
+        android:layout_width="126dp"
+        android:layout_height="110dp"
+        android:layout_marginEnd="1dp"
+        android:layout_marginRight="1dp"
+        android:layout_marginBottom="20dp"
+        android:background="@null"
+        android:scaleType="fitXY"
+        android:src="@drawable/automaticrecream"
+        app:layout_constraintBottom_toTopOf="@+id/imageDish2"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <ImageButton
+        android:id="@+id/imageCreamChocolate"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginBottom="13dp"
+        android:background="@null"
+        android:scaleType="fitXY"
+        android:src="@drawable/creamchocolate"
+        app:layout_constraintBottom_toTopOf="@+id/imageFruitStrawberry"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageButton
+        android:id="@+id/imageIce"
+        android:layout_width="180dp"
+        android:layout_height="80dp"
+        android:layout_marginStart="58dp"
+        android:layout_marginLeft="58dp"
+        android:background="@null"
+        android:scaleType="fitXY"
+        android:src="@drawable/ice"
+        app:layout_constraintBottom_toTopOf="@+id/imageDough"
+        app:layout_constraintStart_toEndOf="@+id/imagePosypka" />
+
+    <ImageButton
+        android:id="@+id/imageDough"
+        android:layout_width="180dp"
+        android:layout_height="90dp"
+        android:layout_marginStart="34dp"
+        android:layout_marginLeft="34dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginRight="4dp"
+        android:background="@null"
+        android:scaleType="fitXY"
+        android:src="@drawable/takedough"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/imageHornIcecream"
+        app:layout_constraintStart_toEndOf="@+id/imageGarbage" />
 
     <ImageButton
         android:id="@+id/imageGarbage"
         android:layout_width="64dp"
         android:layout_height="77dp"
-        android:layout_marginStart="3dp"
-        android:layout_marginLeft="3dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginLeft="15dp"
+        android:background="@null"
+        android:scaleType="fitXY"
+        android:src="@drawable/garbage"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/imageDish3"
-        app:layout_constraintStart_toEndOf="@+id/imageHornCake"
-        app:srcCompat="@mipmap/ic_launcher"
-        android:background="@null"/>
+        app:layout_constraintStart_toEndOf="@+id/imageFruitNut" />
 
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="99dp"
         android:layout_height="86dp"
-        app:layout_constraintStart_toEndOf="@+id/imageGuest1"
-        app:layout_constraintTop_toTopOf="parent"
         android:scaleType="fitXY"
-        android:src="@drawable/cakewithfruitchocolate" />
+        android:src="@drawable/nothing"
+        app:layout_constraintStart_toEndOf="@+id/imageGuest1"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -45,13 +45,13 @@ public class Cake extends Dish{
             if(!isFurnace){
                 switch (colour){
                     case 1:
-                        imageButton.setImageResource(R.drawable.cakewithfruitvanille); //Поменять!
+                        imageButton.setImageResource(R.drawable.cakeinhornvanille);
                         break;
                     case 2:
-                        imageButton.setImageResource(R.drawable.cakewithfruitchocolate); //Поменять!
+                        imageButton.setImageResource(R.drawable.cakeinhornchocolate);
                         break;
                     case 3:
-                        imageButton.setImageResource(R.drawable.cakewithfruitstrawberry); //Поменять!
+                        imageButton.setImageResource(R.drawable.cakeinhornstrawberry);
                         break;
                 }
             } else if(!isFruit){
@@ -83,13 +83,13 @@ public class Cake extends Dish{
             if(!isFurnace){
                 switch (colour){
                     case 1:
-                        imageButton.setImageResource(R.drawable.cakewithfruitvanilleon); //Поменять!
+                        imageButton.setImageResource(R.drawable.cakeinhornvanilleon);
                         break;
                     case 2:
-                        imageButton.setImageResource(R.drawable.cakewithfruitchocolateon); //Поменять!
+                        imageButton.setImageResource(R.drawable.cakeinhornchocolateon);
                         break;
                     case 3:
-                        imageButton.setImageResource(R.drawable.cakewithfruitstrawberryon); //Поменять!
+                        imageButton.setImageResource(R.drawable.cakeinhornstrawberryon);
                         break;
                 }
             } else if(!isFruit){
