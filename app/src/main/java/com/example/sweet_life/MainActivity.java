@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.pm.ActivityInfo;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -14,20 +15,21 @@ import android.widget.TextView;
 
 import java.io.IOError;
 import java.io.IOException;
+import java.sql.Time;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.Timer;
 import java.util.TimerTask;
 
 public class MainActivity extends AppCompatActivity {
-    final int countGuests = 4;//Количество гостей
-    final int countDishes = 4;//Количество блюд
-    boolean[] arrayFlags = new boolean[countDishes];//Проверка на блюда, подсвечены ли они
-    Dish[] dishes = new Dish[countDishes];//Блюда
-    boolean[] arrayFlagsIsEmpty = new boolean[countDishes]; //Проверка на блюда, в машине ли блюда или нет
-    boolean isWorkingAutomatIcecream = false;
-    int timeAutomatIcecream = 0;
-    int numberTakeDishForAutomatIcecream;
-    boolean change;
-
+    private final int countGuests = 4;//Количество гостей
+    private final int countDishes = 4;//Количество блюд
+    private boolean[] arrayFlags = new boolean[countDishes];//Проверка на блюда, подсвечены ли они
+    private Dish[] dishes = new Dish[countDishes];//Блюда
+    private boolean[] arrayFlagsIsEmpty = new boolean[countDishes]; //Проверка на блюда, в машине ли блюда или нет
+    private boolean[] change = new boolean[countDishes];
+    private int numberTakeDishForAutomatIcecream, numberTakeDishForFurnace, numberTakeDishForPlate;
+    private boolean isWorkingAutomatIcecream = false, isWorkingFurnace = false, isWorkingPlate = false;
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
@@ -49,15 +51,20 @@ public class MainActivity extends AppCompatActivity {
 
         TextView textScore = (TextView)findViewById(R.id.textScore);
         final ImageButton automatIcecream = (ImageButton)findViewById(R.id.imageAutomatIcecream);
-        ImageButton furnace = (ImageButton)findViewById(R.id.imageFurnace);
+        final ImageButton furnace = (ImageButton)findViewById(R.id.imageFurnace);
         ImageButton creamChocolate = (ImageButton)findViewById(R.id.imageCreamChocolate);
         ImageButton creamStrawberry = (ImageButton)findViewById(R.id.imageCreamStrawberry);
         ImageButton creamVanille = (ImageButton)findViewById(R.id.imageCreamVanille);
-        ImageButton plate = (ImageButton)findViewById(R.id.imagePlate);
+        ImageButton fruitSrawberry = (ImageButton)findViewById(R.id.imageFruitStrawberry);
+        ImageButton fruitNut = (ImageButton)findViewById(R.id.imageFruitNut);
+        ImageButton fruitBanana = (ImageButton)findViewById(R.id.imageFruitBanana);
+        final ImageButton plate = (ImageButton)findViewById(R.id.imagePlate);
         ImageButton dough = (ImageButton)findViewById(R.id.imageDough);
         ImageButton ice = (ImageButton)findViewById(R.id.imageIce);
         ImageButton hornIcecream = (ImageButton)findViewById(R.id.imageHornIcecream) ;
         ImageButton hornCake = (ImageButton) findViewById(R.id.imageHornCake);
+        ImageButton posypka = (ImageButton)findViewById(R.id.imagePosypka);
+        ImageButton garbage = (ImageButton)findViewById(R.id.imageGarbage);
 
         ImageButton[] arrayImageGuests = new ImageButton[countGuests];
         final ImageButton[] arrayImageDish = new ImageButton[countDishes];
@@ -83,10 +90,10 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if (!arrayFlagsIsEmpty[0]) {
                     dishes[0].setImage(arrayImageDish[0],arrayFlags[0]);
-                    change = false;
+                    change[0] = false;
                     if (arrayFlags[0]) {
                         arrayFlags[0] = !arrayFlags[0];
-                        change = true;
+                        change[0] = true;
                     }
                     if (arrayFlags[3])
                         arrayImageDish[3].callOnClick();
@@ -94,7 +101,7 @@ public class MainActivity extends AppCompatActivity {
                         arrayImageDish[1].callOnClick();
                     if (arrayFlags[2])
                         arrayImageDish[2].callOnClick();
-                    if (!change)
+                    if (!change[0])
                         arrayFlags[0] = !arrayFlags[0];
                 }
             }
@@ -107,10 +114,10 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if (!arrayFlagsIsEmpty[1]) {
                     dishes[1].setImage(arrayImageDish[1],arrayFlags[1]);
-                    change = false;
+                    change[1] = false;
                     if (arrayFlags[1]) {
                         arrayFlags[1] = !arrayFlags[1];
-                        change = true;
+                        change[1] = true;
                     }
                     if (arrayFlags[0])
                         arrayImageDish[0].callOnClick();
@@ -118,7 +125,7 @@ public class MainActivity extends AppCompatActivity {
                         arrayImageDish[3].callOnClick();
                     if (arrayFlags[2])
                         arrayImageDish[2].callOnClick();
-                    if (!change)
+                    if (!change[1])
                         arrayFlags[1] = !arrayFlags[1];
                 }
             }
@@ -131,10 +138,10 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if (!arrayFlagsIsEmpty[2]) {
                     dishes[2].setImage(arrayImageDish[2],arrayFlags[2]);
-                    change = false;
+                    change[2] = false;
                     if (arrayFlags[2]) {
                         arrayFlags[2] = !arrayFlags[2];
-                        change = true;
+                        change[2] = true;
                     }
                     if (arrayFlags[0])
                         arrayImageDish[0].callOnClick();
@@ -142,7 +149,7 @@ public class MainActivity extends AppCompatActivity {
                         arrayImageDish[1].callOnClick();
                     if (arrayFlags[3])
                         arrayImageDish[3].callOnClick();
-                    if (!change)
+                    if (!change[2])
                         arrayFlags[2] = !arrayFlags[2];
                 }
             }
@@ -155,10 +162,10 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if (!arrayFlagsIsEmpty[3]) {
                     dishes[3].setImage(arrayImageDish[3],arrayFlags[3]);
-                    change = false;
+                    change[3] = false;
                     if (arrayFlags[3]) {
                         arrayFlags[3] = !arrayFlags[3];
-                        change = true;
+                        change[3] = true;
                     }
                     if (arrayFlags[0])
                         arrayImageDish[0].callOnClick();
@@ -166,7 +173,7 @@ public class MainActivity extends AppCompatActivity {
                         arrayImageDish[1].callOnClick();
                     if (arrayFlags[2])
                         arrayImageDish[2].callOnClick();
-                    if (!change)
+                    if (!change[3])
                         arrayFlags[3] = !arrayFlags[3];
                 }
             }
@@ -215,6 +222,7 @@ public class MainActivity extends AppCompatActivity {
                         arrayFlags[i] = false;
                         dishes[i] = new Icecream(0,false,false,false,false);
                         arrayImageDish[i].setImageResource(R.drawable.hornoficecream);
+                        break;
                     }
                 }
             }
@@ -238,6 +246,7 @@ public class MainActivity extends AppCompatActivity {
                                 case 3:
                                     arrayImageDish[i].setImageResource(R.drawable.cakewithfruitstrawberry); //Исправить на пироженое в рожке
                             }
+                            break;
                         }
                     }
                 }
@@ -255,16 +264,19 @@ public class MainActivity extends AppCompatActivity {
                             if(((Icecream)dishes[i]).isIce && !((Icecream)dishes[i]).isColour){
                                 ((Icecream)dishes[i]).paint(1,arrayImageDish[i]);
                                 arrayFlags[i] = false;
+                                break;
                             }
                         } else if(dishes[i] instanceof Dough){
                             if(!((Dough)dishes[i]).isColour){
                                 ((Dough)dishes[i]).paint(1,arrayImageDish[i]);
                                 arrayFlags[i] = false;
+                                break;
                             }
                         } else if(dishes[i] instanceof Donut){
                             if(!((Donut)dishes[i]).isColour){
                                 ((Donut)dishes[i]).paint(1,arrayImageDish[i]);
                                 arrayFlags[i] = false;
+                                break;
                             }
                         }
                     }
@@ -283,16 +295,19 @@ public class MainActivity extends AppCompatActivity {
                             if(((Icecream)dishes[i]).isIce && !((Icecream)dishes[i]).isColour){
                                 ((Icecream)dishes[i]).paint(2,arrayImageDish[i]);
                                 arrayFlags[i] = false;
+                                break;
                             }
                         } else if(dishes[i] instanceof Dough){
                             if(!((Dough)dishes[i]).isColour){
                                 ((Dough)dishes[i]).paint(2,arrayImageDish[i]);
                                 arrayFlags[i] = false;
+                                break;
                             }
                         } else if(dishes[i] instanceof Donut){
                             if(!((Donut)dishes[i]).isColour){
                                 ((Donut)dishes[i]).paint(2,arrayImageDish[i]);
                                 arrayFlags[i] = false;
+                                break;
                             }
                         }
                     }
@@ -311,16 +326,19 @@ public class MainActivity extends AppCompatActivity {
                             if(((Icecream)dishes[i]).isIce && !((Icecream)dishes[i]).isColour){
                                 ((Icecream)dishes[i]).paint(3,arrayImageDish[i]);
                                 arrayFlags[i] = false;
+                                break;
                             }
                         } else if(dishes[i] instanceof Dough){
                             if(!((Dough)dishes[i]).isColour){
                                 ((Dough)dishes[i]).paint(3,arrayImageDish[i]);
                                 arrayFlags[i] = false;
+                                break;
                             }
                         } else if(dishes[i] instanceof Donut){
                             if(!((Donut)dishes[i]).isColour){
                                 ((Donut)dishes[i]).paint(3,arrayImageDish[i]);
                                 arrayFlags[i] = false;
+                                break;
                             }
                         }
                     }
@@ -333,55 +351,246 @@ public class MainActivity extends AppCompatActivity {
         automatIcecream.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                for(int i = 0; i < countDishes; i++){
-                    if(arrayFlags[i] && dishes[i] instanceof Icecream){
-                        if(((Icecream)dishes[i]).isColour && !((Icecream)dishes[i]).isAutomat){
-                            arrayFlags[i] = false;
-                            numberTakeDishForAutomatIcecream = i;
-                            isWorkingAutomatIcecream = true;
-                            arrayFlagsIsEmpty[i] = true;
-                            ((Icecream)dishes[i]).setAutomat(true,arrayImageDish[i]);
+                if(!isWorkingAutomatIcecream) {
+                    for (int i = 0; i < countDishes; i++) {
+                        if (arrayFlags[i] && dishes[i] instanceof Icecream) {
+                            if (((Icecream) dishes[i]).isColour && !((Icecream) dishes[i]).isAutomat) {
+                                arrayFlags[i] = false;
+                                arrayFlagsIsEmpty[i] = true;
+                                isWorkingAutomatIcecream = true;
+                                ((Icecream) dishes[i]).setAutomat(true, arrayImageDish[i]);
+                                automatIcecream.setImageResource(R.drawable.dough); // Поменять на рабочий автомат
+                                numberTakeDishForAutomatIcecream = i;
+                                Handler handler = new Handler();
+                                handler.postDelayed(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        arrayFlagsIsEmpty[numberTakeDishForAutomatIcecream] = false;
+                                        automatIcecream.setImageResource(R.drawable.doughstrawberry); //Поменять на нерабочий автомат
+                                        isWorkingAutomatIcecream = false;
+                                        switch (((Icecream) dishes[numberTakeDishForAutomatIcecream]).colour) {
+                                            case 1:
+                                                arrayImageDish[numberTakeDishForAutomatIcecream].setImageResource(R.drawable.icecreamwithoutposypkavanille);
+                                                break;
+                                            case 2:
+                                                arrayImageDish[numberTakeDishForAutomatIcecream].setImageResource(R.drawable.icecreamwithoutposypkachocolate);
+                                                break;
+                                            case 3:
+                                                arrayImageDish[numberTakeDishForAutomatIcecream].setImageResource(R.drawable.icecreamwithoutposypkastrawberry);
+                                                break;
+                                        }
+                                    }
+                                }, 5000);
+                                break;
+                            }
                         }
                     }
                 }
-                /*if(isWorkingAutomatIcecream){
-                    final Timer timer = new Timer();
-                    long delay = 1;
-                    long period = 3001;
-                    timeAutomatIcecream = 0;
-                    timer.scheduleAtFixedRate(new TimerTask() {
-                        @Override
-                        public void run() {
-                            timeAutomatIcecream++;
-                            runOnUiThread(new Runnable() {
-                                @Override
-                                public void run() {
-                                    automatIcecream.setImageResource(R.drawable.icecreamwithposypkavanille); //ПОМЕНЯТЬ
-                                    runOnUiThread(new Runnable() {
-                                        @Override
-                                        public void run() {
-                                            automatIcecream.setImageResource(R.drawable.icecreamwithposypkastrawberry); //ПОМЕНЯТЬ
-                                            isWorkingAutomatIcecream = false;
-                                            arrayFlagsIsEmpty[numberTakeDishForAutomatIcecream] = false;
-                                            if(dishes[numberTakeDishForAutomatIcecream].colour == 1)
-                                                arrayImageDish[numberTakeDishForAutomatIcecream].setImageResource(R.drawable.icecreamwithoutposypkavanille);
-                                            else if(dishes[numberTakeDishForAutomatIcecream].colour == 2)
-                                                arrayImageDish[numberTakeDishForAutomatIcecream].setImageResource(R.drawable.icecreamwithoutposypkachocolate);
-                                            else if(dishes[numberTakeDishForAutomatIcecream].colour == 3)
-                                                arrayImageDish[numberTakeDishForAutomatIcecream].setImageResource(R.drawable.icecreamwithoutposypkastrawberry);
-                                            timer.cancel();
-                                        }
-                                    });
-                                }
-                            });
-                        }
-                    },delay,period);
-
-                }*/
             }
         });
-    }
 
+        /*Работа печи*/
+
+        furnace.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (!isWorkingFurnace) {
+                    for (int i = 0; i < countDishes; i++) {
+                        if (arrayFlags[i]) {
+                            if (dishes[i] instanceof Cake) {
+                                if (!((Cake) dishes[i]).isFurnace) {
+                                    arrayFlags[i] = false;
+                                    arrayFlagsIsEmpty[i] = true;
+                                    isWorkingFurnace = true;
+                                    ((Cake) dishes[i]).setFurnace(true, arrayImageDish[i]);
+                                    furnace.setImageResource(R.drawable.dough); // Поменять на рабочую печь
+                                    numberTakeDishForFurnace = i;
+                                    Handler handler = new Handler();
+                                    handler.postDelayed(new Runnable() {
+                                        @Override
+                                        public void run() {
+                                            arrayFlagsIsEmpty[numberTakeDishForFurnace] = false;
+                                            isWorkingFurnace = false;
+                                            furnace.setImageResource(R.drawable.doughstrawberry); //Поменять на нерабочую печь
+                                            switch (((Cake) dishes[numberTakeDishForFurnace]).colour) {
+                                                case 1:
+                                                    arrayImageDish[numberTakeDishForFurnace].setImageResource(R.drawable.cakewithoutfruitvanille);
+                                                    break;
+                                                case 2:
+                                                    arrayImageDish[numberTakeDishForFurnace].setImageResource(R.drawable.cakewithoutfruitchocolate);
+                                                    break;
+                                                case 3:
+                                                    arrayImageDish[numberTakeDishForFurnace].setImageResource(R.drawable.cakewithoutfruitstrawberry);
+                                                    break;
+                                            }
+                                        }
+                                    }, 5000);
+                                    break;
+                                }
+                            } else if (dishes[i] instanceof Dough) {
+                                if (((Dough) dishes[i]).isColour) {
+                                    arrayFlags[i] = false;
+                                    arrayFlagsIsEmpty[i] = true;
+                                    isWorkingFurnace = true;
+                                    dishes[i] = new Croissant(((Dough) dishes[i]).colour, true);
+                                    furnace.setImageResource(R.drawable.dough); // Поменять на рабочий автомат
+                                    numberTakeDishForFurnace = i;
+                                    arrayImageDish[i].setImageResource(R.drawable.nothing);
+                                    Handler handler = new Handler();
+                                    handler.postDelayed(new Runnable() {
+                                        @Override
+                                        public void run() {
+                                            arrayFlagsIsEmpty[numberTakeDishForFurnace] = false;
+                                            isWorkingFurnace = false;
+                                            furnace.setImageResource(R.drawable.doughstrawberry); //Поменять на нерабочий автомат
+                                            switch (((Croissant) dishes[numberTakeDishForFurnace]).colour) {
+                                                case 1:
+                                                    arrayImageDish[numberTakeDishForFurnace].setImageResource(R.drawable.croissantvanille);
+                                                    break;
+                                                case 2:
+                                                    arrayImageDish[numberTakeDishForFurnace].setImageResource(R.drawable.croissantchocolate);
+                                                    break;
+                                                case 3:
+                                                    arrayImageDish[numberTakeDishForFurnace].setImageResource(R.drawable.croissantstrawberry);
+                                                    break;
+                                            }
+                                        }
+                                    }, 5000);
+                                    break;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+        /* Работа плтиы*/
+
+        plate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(!isWorkingPlate) {
+                    for (int i = 0; i < countDishes; i++) {
+                        if (arrayFlags[i] && dishes[i] instanceof Dough) {
+                            if (!((Dough) dishes[i]).isColour) {
+                                arrayFlags[i] = false;
+                                arrayFlagsIsEmpty[i] = true;
+                                isWorkingPlate = true;
+                                dishes[i] = new Donut(0,false,false);
+                                plate.setImageResource(R.drawable.dough); // Поменять на рабочий автомат
+                                numberTakeDishForPlate = i;
+                                arrayImageDish[i].setImageResource(R.drawable.nothing);
+                                Handler handler = new Handler();
+                                handler.postDelayed(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        arrayFlagsIsEmpty[numberTakeDishForPlate] = false;
+                                        plate.setImageResource(R.drawable.doughstrawberry); //Поменять на нерабочий автомат
+                                        isWorkingPlate = false;
+                                        arrayImageDish[numberTakeDishForPlate].setImageResource(R.drawable.donutwithposypkavanille); //Поменять на пончик без цвета
+                                    }
+                                }, 5000);
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+        /*Работа клубники*/
+
+        fruitSrawberry.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                for(int i = 0; i < countDishes;i++){
+                    if(arrayFlags[i] && dishes[i] instanceof Cake){
+                        if(!((Cake)dishes[i]).isFruit && ((Cake)dishes[i]).isFurnace && ((Cake)dishes[i]).colour == 2){
+                            arrayFlags[i] = false;
+                            ((Cake)dishes[i]).setFruit(true,arrayImageDish[i]);
+                            break;
+                        }
+                    }
+                }
+            }
+        });
+
+        /*Работа банана*/
+        fruitBanana.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                for(int i = 0; i < countDishes;i++){
+                    if(arrayFlags[i] && dishes[i] instanceof Cake){
+                        if(!((Cake)dishes[i]).isFruit && ((Cake)dishes[i]).isFurnace && ((Cake)dishes[i]).colour == 3){
+                            arrayFlags[i] = false;
+                            ((Cake)dishes[i]).setFruit(true,arrayImageDish[i]);
+                            break;
+                        }
+                    }
+                }
+            }
+        });
+
+        /*Работа ореха*/
+
+        fruitNut.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                for(int i = 0; i < countDishes;i++){
+                    if(arrayFlags[i] && dishes[i] instanceof Cake){
+                        if(!((Cake)dishes[i]).isFruit && ((Cake)dishes[i]).isFurnace && ((Cake)dishes[i]).colour == 1){
+                            arrayFlags[i] = false;
+                            ((Cake)dishes[i]).setFruit(true,arrayImageDish[i]);
+                            break;
+                        }
+                    }
+                }
+            }
+        });
+
+        /*Работа посыпки*/
+
+        posypka.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                for(int i = 0; i < countDishes;i++){
+                    if(arrayFlags[i]){
+                        if(dishes[i] instanceof Donut){
+                            if(!((Donut)dishes[i]).isPosypka && ((Donut)dishes[i]).isColour){
+                                ((Donut)dishes[i]).setPosypka(true,arrayImageDish[i]);
+                                arrayFlags[i] = false;
+                                break;
+                            }
+                        } else if(dishes[i] instanceof Icecream){
+                            if(((Icecream)dishes[i]).isAutomat && !((Icecream)dishes[i]).isPosypka){
+                                ((Icecream)dishes[i]).setPosypka(true,arrayImageDish[i]);
+                                arrayFlags[i] = false;
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+        /*Работа урны*/
+
+        garbage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                for(int i = 0; i < countDishes;i++){
+                    if(arrayFlags[i]){
+                        arrayFlags[i] = false;
+                        dishes[i] = new Nothing();
+                        arrayImageDish[i].setImageResource(R.drawable.dish);
+                        break;
+                    }
+                }
+            }
+        });
+
+    }
     void fillArray(boolean[] array,boolean temp){
         for(int i = 0; i < array.length;i++){
             array[i] = temp;

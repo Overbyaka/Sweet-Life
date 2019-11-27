@@ -20,6 +20,26 @@ public class Cake extends Dish{
         else return false;
     }
 
+    public void setFruit(boolean fruit, ImageButton imageButton) {
+        isFruit = fruit;
+        switch (colour){
+            case 1:
+                imageButton.setImageResource(R.drawable.cakewithfruitvanille);
+                break;
+            case 2:
+                imageButton.setImageResource(R.drawable.cakewithfruitchocolate);
+                break;
+            case 3:
+                imageButton.setImageResource(R.drawable.cakewithfruitstrawberry);
+                break;
+        }
+    }
+
+    public void setFurnace(boolean furnace, ImageButton imageButton){
+        isFurnace = furnace;
+        imageButton.setImageResource(R.drawable.nothing);
+    }
+
     public void setImage(ImageButton imageButton, boolean flag){
         if(flag){
             if(!isFurnace){

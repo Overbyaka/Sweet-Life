@@ -16,6 +16,21 @@ public class Donut extends Dish implements Paint{
         else return false;
     }
 
+    public void setPosypka(boolean posypka,ImageButton imageButton) {
+        isPosypka = posypka;
+        switch (colour){
+            case 1:
+                imageButton.setImageResource(R.drawable.donutwithposypkavanille);
+                break;
+            case 2:
+                imageButton.setImageResource(R.drawable.donutwithposypkachocolate);
+                break;
+            case 3:
+                imageButton.setImageResource(R.drawable.donutwithposypkastrawberry);
+                break;
+        }
+    }
+
     public void paint(int colour, ImageButton imageButton){
         switch (colour){
             case 1:

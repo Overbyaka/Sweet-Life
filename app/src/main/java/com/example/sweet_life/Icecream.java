@@ -22,8 +22,19 @@ public class Icecream extends Dish implements Paint{
         else return false;
     }
 
-    public void setPosypka(boolean posypka) {
+    public void setPosypka(boolean posypka, ImageButton imageButton) {
         isPosypka = posypka;
+        switch (colour){
+            case 1:
+                imageButton.setImageResource(R.drawable.icecreamwithposypkavanille);
+                break;
+            case 2:
+                imageButton.setImageResource(R.drawable.icecreamwithposypkachocolate);
+                break;
+            case 3:
+                imageButton.setImageResource(R.drawable.icecreamwithposypkastrawberry);
+                break;
+        }
     }
 
     public void setAutomat(boolean automat, ImageButton imageButton) {
