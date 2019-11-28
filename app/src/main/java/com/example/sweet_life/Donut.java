@@ -37,7 +37,7 @@ public class Donut extends Dish implements Paint,Posypka{
                 imageButton.setImageResource(R.drawable.donutwithoutposypkavanille);
                 break;
             case 2:
-                imageButton.setImageResource(R.drawable.donutwithposypkachocolate);
+                imageButton.setImageResource(R.drawable.donutwithoutposypkachocolate);
                 break;
             case 3:
                 imageButton.setImageResource(R.drawable.donutwithoutposypkastrawberry);

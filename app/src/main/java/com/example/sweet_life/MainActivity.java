@@ -6,6 +6,7 @@ import android.content.pm.ActivityInfo;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Message;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -31,7 +32,8 @@ public class MainActivity extends AppCompatActivity {
     private int numberTakeDishForAutomatIcecream, numberTakeDishForFurnace, numberTakeDishForPlate;
     private boolean isWorkingAutomatIcecream = false, isWorkingFurnace = false, isWorkingPlate = false;
     private boolean[] isQuest = new boolean[countGuests];
-
+    private int[] numberWishes = new int[countGuests];
+    private int score = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
@@ -54,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
         fillArray(arrayFlagsIsEmpty,false);//Заполняем массив
         fillArray(isQuest,false);
 
-        TextView textScore = (TextView)findViewById(R.id.textScore);
+        final TextView textScore = (TextView)findViewById(R.id.textScore);
         final ImageButton automatIcecream = (ImageButton)findViewById(R.id.imageAutomatIcecream);
         final ImageButton furnace = (ImageButton)findViewById(R.id.imageFurnace);
         ImageButton creamChocolate = (ImageButton)findViewById(R.id.imageCreamChocolate);
@@ -71,8 +73,10 @@ public class MainActivity extends AppCompatActivity {
         ImageButton posypka = (ImageButton)findViewById(R.id.imagePosypka);
         ImageButton garbage = (ImageButton)findViewById(R.id.imageGarbage);
 
-        ImageButton[] arrayImageGuests = new ImageButton[countGuests];
+        final ImageButton[] arrayImageGuests = new ImageButton[countGuests];
         final ImageButton[] arrayImageDish = new ImageButton[countDishes];
+        final ImageView[] arrayImageWishes = new ImageView[countGuests];
+
 
         arrayImageGuests[0] = (ImageButton)findViewById(R.id.imageGuest1);
         arrayImageGuests[1] = (ImageButton)findViewById(R.id.imageGuest2);
@@ -84,11 +88,70 @@ public class MainActivity extends AppCompatActivity {
         arrayImageDish[2] = (ImageButton)findViewById(R.id.imageDish3);
         arrayImageDish[3] = (ImageButton)findViewById(R.id.imageDish4);
 
+        arrayImageWishes[0] = (ImageView)findViewById((R.id.imageWish1));
+        arrayImageWishes[1] = (ImageView)findViewById((R.id.imageWish2));
+        arrayImageWishes[2] = (ImageView)findViewById((R.id.imageWish3));
+        arrayImageWishes[3] = (ImageView)findViewById((R.id.imageWish4));
+
         for(int i = 0; i < countDishes;i++){
             dishes[i] = new Nothing();
         }
 
-        Handler quests = new Handler();
+        /*Генерация гостей с желанием*/
+
+        final Handler quests = new Handler();
+        Runnable runnableQuests = new Runnable() {
+            public void run() {
+                for(int i = 0; i < countGuests;i++){
+                    if(!isQuest[i]){
+                        isQuest[i] = true;
+                        arrayImageGuests[i].setImageResource(R.drawable.guest);
+                        numberWishes[i] = (int)(Math.random()*12);
+                        switch (numberWishes[i]){
+                            case 0:
+                                arrayImageWishes[i].setImageResource(R.drawable.want0);
+                                break;
+                            case 1:
+                                arrayImageWishes[i].setImageResource(R.drawable.want1);
+                                break;
+                            case 2:
+                                arrayImageWishes[i].setImageResource(R.drawable.want2);
+                                break;
+                            case 3:
+                                arrayImageWishes[i].setImageResource(R.drawable.want3);
+                                break;
+                            case 4:
+                                arrayImageWishes[i].setImageResource(R.drawable.want4);
+                                break;
+                            case 5:
+                                arrayImageWishes[i].setImageResource(R.drawable.want5);
+                                break;
+                            case 6:
+                                arrayImageWishes[i].setImageResource(R.drawable.want6);
+                                break;
+                            case 7:
+                                arrayImageWishes[i].setImageResource(R.drawable.want7);
+                                break;
+                            case 8:
+                                arrayImageWishes[i].setImageResource(R.drawable.want8);
+                                break;
+                            case 9:
+                                arrayImageWishes[i].setImageResource(R.drawable.want9);
+                                break;
+                            case 10:
+                                arrayImageWishes[i].setImageResource(R.drawable.want10);
+                                break;
+                            case 11:
+                                arrayImageWishes[i].setImageResource(R.drawable.want11);
+                                break;
+                        }
+                        break;
+                    }
+                }
+                quests.postDelayed(this, 13000);
+            }
+        };
+quests.post(runnableQuests);
 
 
         /*Подсветка для первой тарелки*/
@@ -598,10 +661,237 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        arrayImageGuests[0].setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(isQuest[0]){
+                    for(int i = 0; i < countDishes; i++){
+                        if(arrayFlags[i]){
+                            completeQuest(textScore, arrayImageGuests[0],arrayImageWishes[0],arrayImageDish[i],0,i);
+                        }
+                    }
+                }
+            }
+        });
+
+        arrayImageGuests[1].setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(isQuest[1]){
+                    for(int i = 0; i < countDishes; i++){
+                        if(arrayFlags[i]){
+                            completeQuest(textScore, arrayImageGuests[1],arrayImageWishes[1],arrayImageDish[i],1,i);
+                        }
+                    }
+                }
+            }
+        });
+
+        arrayImageGuests[2].setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(isQuest[2]){
+                    for(int i = 0; i < countDishes; i++){
+                        if(arrayFlags[i]){
+                            completeQuest(textScore, arrayImageGuests[2],arrayImageWishes[2],arrayImageDish[i],2,i);
+                        }
+                    }
+                }
+            }
+        });
+
+        arrayImageGuests[3].setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(isQuest[3]){
+                    for(int i = 0; i < countDishes; i++){
+                        if(arrayFlags[i]){
+                            completeQuest(textScore, arrayImageGuests[3],arrayImageWishes[3],arrayImageDish[i],3,i);
+                        }
+                    }
+                }
+            }
+        });
     }
     void fillArray(boolean[] array,boolean temp){
         for(int i = 0; i < array.length;i++){
             array[i] = temp;
+        }
+    }
+    void completeQuest(TextView text, ImageButton imageGuest,ImageView imageWish, ImageButton imageDish, int number, int i){
+        switch (numberWishes[number]){
+            case 0:
+                if(dishes[i] instanceof Icecream){
+                    if(((Icecream)dishes[i]).isPosypka &&(((Icecream)dishes[i]).colour == 3)){
+                        score +=40;
+                        imageGuest.setImageResource(R.drawable.nothing);
+                        imageWish.setImageResource(R.drawable.nothing);
+                        imageDish.setImageResource(R.drawable.dish);
+                        arrayFlags[i] = false;
+                        isQuest[number] = false;
+                        dishes[i] = new Nothing();
+                        text.setText("Score " + score);
+
+                    }
+                }
+                break;
+            case 1:
+                if(dishes[i] instanceof Icecream){
+                    if(((Icecream)dishes[i]).isPosypka &&(((Icecream)dishes[i]).colour == 2)){
+                        score +=40;
+                        imageGuest.setImageResource(R.drawable.nothing);
+                        imageWish.setImageResource(R.drawable.nothing);
+                        imageDish.setImageResource(R.drawable.dish);
+                        arrayFlags[i] = false;
+                        isQuest[number] = false;
+                        dishes[i] = new Nothing();
+                        text.setText("Score " + score);
+                    }
+                }
+                break;
+            case 2:
+                if(dishes[i] instanceof Icecream){
+                    if(((Icecream)dishes[i]).isPosypka &&(((Icecream)dishes[i]).colour == 1)){
+                        score +=40;
+                        imageGuest.setImageResource(R.drawable.nothing);
+                        imageWish.setImageResource(R.drawable.nothing);
+                        imageDish.setImageResource(R.drawable.dish);
+                        arrayFlags[i] = false;
+                        isQuest[number] = false;
+                        dishes[i] = new Nothing();
+                        text.setText("Score " + score);
+                    }
+                }
+                break;
+            case 3:
+                if(dishes[i] instanceof Cake){
+                    if(((Cake)dishes[i]).isFruit &&(((Cake)dishes[i]).colour == 3)){
+                        score +=50;
+                        imageGuest.setImageResource(R.drawable.nothing);
+                        imageWish.setImageResource(R.drawable.nothing);
+                        imageDish.setImageResource(R.drawable.dish);
+                        arrayFlags[i] = false;
+                        isQuest[number] = false;
+                        dishes[i] = new Nothing();
+                        text.setText("Score " + score);
+                    }
+                }
+                break;
+            case 4:
+                if(dishes[i] instanceof Cake){
+                    if(((Cake)dishes[i]).isFruit &&(((Cake)dishes[i]).colour == 1)){
+                        score +=50;
+                        imageGuest.setImageResource(R.drawable.nothing);
+                        imageWish.setImageResource(R.drawable.nothing);
+                        imageDish.setImageResource(R.drawable.dish);
+                        arrayFlags[i] = false;
+                        isQuest[number] = false;
+                        dishes[i] = new Nothing();
+                        text.setText("Score " + score);
+                    }
+                }
+                break;
+            case 5:
+                if(dishes[i] instanceof Cake){
+                    if(((Cake)dishes[i]).isFruit &&(((Cake)dishes[i]).colour == 2)){
+                        score +=50;
+                        imageGuest.setImageResource(R.drawable.nothing);
+                        imageWish.setImageResource(R.drawable.nothing);
+                        imageDish.setImageResource(R.drawable.dish);
+                        arrayFlags[i] = false;
+                        isQuest[number] = false;
+                        dishes[i] = new Nothing();
+                        text.setText("Score " + score);
+                    }
+                }
+                break;
+            case 6:
+                if(dishes[i] instanceof Croissant){
+                    if(((Croissant)dishes[i]).colour == 3){
+                        score +=20;
+                        imageGuest.setImageResource(R.drawable.nothing);
+                        imageWish.setImageResource(R.drawable.nothing);
+                        imageDish.setImageResource(R.drawable.dish);
+                        arrayFlags[i] = false;
+                        isQuest[number] = false;
+                        dishes[i] = new Nothing();
+                        text.setText("Score " + score);
+                    }
+                }
+                break;
+            case 7:
+                if(dishes[i] instanceof Croissant){
+                    if(((Croissant)dishes[i]).colour == 2){
+                        score +=20;
+                        imageGuest.setImageResource(R.drawable.nothing);
+                        imageWish.setImageResource(R.drawable.nothing);
+                        imageDish.setImageResource(R.drawable.dish);
+                        arrayFlags[i] = false;
+                        isQuest[number] = false;
+                        dishes[i] = new Nothing();
+                        text.setText("Score " + score);
+                    }
+                }
+                break;
+            case 8:
+                if(dishes[i] instanceof Croissant){
+                    if(((Croissant)dishes[i]).colour == 1){
+                        score +=20;
+                        imageGuest.setImageResource(R.drawable.nothing);
+                        imageWish.setImageResource(R.drawable.nothing);
+                        imageDish.setImageResource(R.drawable.dish);
+                        arrayFlags[i] = false;
+                        isQuest[number] = false;
+                        dishes[i] = new Nothing();
+                        text.setText("Score " + score);
+                    }
+                }
+                break;
+            case 9:
+                if(dishes[i] instanceof Donut){
+                    if(((Donut)dishes[i]).colour == 1 && ((Donut)dishes[i]).isPosypka){
+                        score +=30;
+                        imageGuest.setImageResource(R.drawable.nothing);
+                        imageWish.setImageResource(R.drawable.nothing);
+                        imageDish.setImageResource(R.drawable.dish);
+                        arrayFlags[i] = false;
+                        isQuest[number] = false;
+                        dishes[i] = new Nothing();
+                        text.setText("Score " + score);
+                    }
+                }
+                break;
+            case 10:
+                if(dishes[i] instanceof Donut){
+                    if(((Donut)dishes[i]).colour == 2 && ((Donut)dishes[i]).isPosypka){
+                        score +=30;
+                        imageGuest.setImageResource(R.drawable.nothing);
+                        imageWish.setImageResource(R.drawable.nothing);
+                        imageDish.setImageResource(R.drawable.dish);
+                        arrayFlags[i] = false;
+                        isQuest[number] = false;
+                        dishes[i] = new Nothing();
+                        text.setText("Score " + score);
+                    }
+                }
+                break;
+            case 11:
+                if(dishes[i] instanceof Donut){
+                    if(((Donut)dishes[i]).colour == 3 && ((Donut)dishes[i]).isPosypka){
+                        score +=30;
+                        imageGuest.setImageResource(R.drawable.nothing);
+                        imageWish.setImageResource(R.drawable.nothing);
+                        imageDish.setImageResource(R.drawable.dish);
+                        arrayFlags[i] = false;
+                        isQuest[number] = false;
+                        dishes[i] = new Nothing();
+                        text.setText("Score " + score);
+                    }
+                }
+                break;
+        }
+        if(score>=1000){
+            text.setText("You already won. STOP!");
         }
     }
 }//2340 1080
